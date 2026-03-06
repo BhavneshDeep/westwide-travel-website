@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westwide Travel and Tours - Explore the World</title>
+    <meta name="description" content="Discover affordable travel and visa services with Westwide Travel and Tours. Book international tour packages and fast visa processing today.">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="fa-solid fa-plane-departure" style="color: var(--color-accent);"></i>
+                Westwide <span>Travel & Tours</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <div class="search-icon" style="cursor: pointer; color: var(--color-primary); margin-right: 15px;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <a href="contact.html" class="btn btn-primary">Book Now</a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content text-center">
+                <h1 class="animate-on-scroll">Explore the World with<br>Westwide Travel and Tours</h1>
+                <p class="hero-subtitle animate-on-scroll" style="animation-delay: 0.2s;">Your trusted partner for affordable international travel packages, seamless visa processing, and unforgettable experiences.</p>
+                <div class="hero-btns animate-on-scroll" style="animation-delay: 0.4s;">
+                    <a href="services.html" class="btn btn-primary">Book Now</a>
+                    <a href="contact.html" class="btn btn-outline" style="color: white; border-color: white;">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Bar Section (Floating) -->
+        <div class="search-bar-container container animate-on-scroll" style="animation-delay: 0.6s;">
+            <div class="search-bar">
+                <div class="search-field">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="text" placeholder="Where do you want to go?">
+                </div>
+                <div class="search-field">
+                    <i class="fa-regular fa-calendar-days"></i>
+                    <input type="text" placeholder="Travel Date">
+                </div>
+                <div class="search-field">
+                    <i class="fa-solid fa-passport"></i>
+                    <select>
+                        <option value="">Service Type</option>
+                        <option value="tour">Tour Package</option>
+                        <option value="visa">Visa Service</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary search-btn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            </div>
+        </div>
+
+        <!-- Introduction Section -->
+        <section class="section intro-section text-center container animate-on-scroll">
+            <h2 class="section-title">Welcome to Westwide</h2>
+            <p class="section-desc" style="max-width: 800px; margin: 0 auto; margin-bottom: 2rem;">
+                At Westwide Travel and Tours, we bring the world closer to you. With years of experience in the travel industry, we specialize in curating personalized travel experiences and providing hassle-free visa application services. Whether you are planning a family vacation, a romantic honeymoon, or a corporate trip, our dedicated team ensures every detail is perfect.
+            </p>
+            <a href="about.html" class="btn btn-outline">Learn More About Us <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+        </section>
+
+        <!-- Featured Popular Tour Packages -->
+        <section class="section bg-light" id="tours">
+            <div class="container">
+                <div class="section-header text-center animate-on-scroll">
+                    <h2 class="section-title">Popular Tour Packages</h2>
+                    <p class="section-desc">Discover our handpicked destinations tailored for an unforgettable journey.</p>
+                </div>
+                
+                <div class="grid cards-grid">
+                    <!-- Card 1 -->
+                    <div class="card tour-card animate-on-scroll">
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                            <div class="card-badge">Top Rated</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="fa-regular fa-clock"></i> 7 Days / 6 Nights</span>
+                                <span class="price">From $899</span>
+                            </div>
+                            <h3>Majestic Switzerland</h3>
+                            <p>Experience the breathing Alps, serene lakes, and the charming culture of Switzerland.</p>
+                            <a href="services.html" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">View Details</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="card tour-card animate-on-scroll" style="animation-delay: 0.2s;">
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                            <div class="card-badge">Best Deal</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="fa-regular fa-clock"></i> 5 Days / 4 Nights</span>
+                                <span class="price">From $549</span>
+                            </div>
+                            <h3>Dubai City Escape</h3>
+                            <p>Explore luxury shopping, ultramodern architecture, and a vibrant nightlife scene in Dubai.</p>
+                            <a href="services.html" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">View Details</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3 -->
+                    <div class="card tour-card animate-on-scroll" style="animation-delay: 0.4s;">
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span><i class="fa-regular fa-clock"></i> 10 Days / 9 Nights</span>
+                                <span class="price">From $1,200</span>
+                            </div>
+                            <h3>Wonders of Thailand</h3>
+                            <p>Discover pristine beaches, opulent royal palaces, and vibrant temples in beautiful Thailand.</p>
+                            <a href="services.html" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 3rem;">
+                    <a href="services.html" class="btn btn-outline">Explore All Tours</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Visa Services Overview -->
+        <section class="section" id="visas">
+            <div class="container container-flex">
+                <div class="visa-content animate-on-scroll">
+                    <h2 class="section-title">Fast & Reliable Visa Processing</h2>
+                    <p class="section-desc" style="margin-bottom: 2rem;">Navigating visa requirements can be complex. Let our expert consultants handle the entire process for you. We provide high success rates and quick turnaround times for tourist, business, and study visas to major countries worldwide.</p>
+                    
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Expert consultation and document review</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Fast-track processing available</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Transparent fees with no hidden costs</li>
+                        <li><i class="fa-solid fa-check-circle"></i> High approval success rate</li>
+                    </ul>
+                    
+                    <a href="services.html#visas" class="btn btn-primary" style="margin-top: 2rem;">Learn About Visa Services</a>
+                </div>
+                <div class="visa-image animate-on-scroll" style="animation-delay: 0.3s; position: relative;">
+                    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Passport and Boarding Pass" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                    
+                    <!-- Floating stats card -->
+                    <div class="floating-stat">
+                        <div class="stat-icon"><i class="fa-solid fa-passport"></i></div>
+                        <div class="stat-info">
+                            <h4>10,000+</h4>
+                            <p>Visas Approved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Testimonials -->
+        <section class="section bg-primary text-white" style="background-color: var(--color-primary); color: white;">
+            <div class="container text-center animate-on-scroll">
+                <h2 style="color: white; margin-bottom: 1rem; font-family: var(--font-heading); font-size: 2.5rem;">What Our Travelers Say</h2>
+                <p style="color: rgba(255,255,255,0.7); margin-bottom: 3rem;">Read stories from our satisfied customers around the globe.</p>
+                
+                <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; text-align: left;">
+                    <!-- Review 1 -->
+                    <div class="testimonial-card" style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: var(--radius-md); backdrop-filter: blur(5px);">
+                        <div class="stars" style="color: #FFD700; margin-bottom: 1rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p style="font-style: italic; margin-bottom: 1.5rem; line-height: 1.8;">"Westwide made our honeymoon to Switzerland absolutely magical. From the hotel bookings to the train passes, everything was flawless. Highly recommended!"</p>
+                        <div class="user-info" style="display: flex; align-items: center; gap: 1rem;">
+                            <img src="https://ui-avatars.com/api/?name=Sarah+Jenkins&background=ff8c42&color=fff" alt="Sarah J." style="border-radius: 50%; width: 50px;">
+                            <div>
+                                <h4 style="color: white; margin: 0;">Sarah Jenkins</h4>
+                                <span style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Traveled to Switzerland</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Review 2 -->
+                    <div class="testimonial-card" style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: var(--radius-md); backdrop-filter: blur(5px);">
+                        <div class="stars" style="color: #FFD700; margin-bottom: 1rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p style="font-style: italic; margin-bottom: 1.5rem; line-height: 1.8;">"I was anxious about my UK visa process, but the team at Westwide walked me through step-by-step. I got my visa approved in record time. Excellent service."</p>
+                        <div class="user-info" style="display: flex; align-items: center; gap: 1rem;">
+                            <img src="https://ui-avatars.com/api/?name=Ahmed+Raza&background=1768c7&color=fff" alt="Ahmed R." style="border-radius: 50%; width: 50px;">
+                            <div>
+                                <h4 style="color: white; margin: 0;">Ahmed Raza</h4>
+                                <span style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">UK Visa Service</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Subscription -->
+        <section class="section newsletter-section">
+            <div class="container animate-on-scroll">
+                <div class="newsletter-box">
+                    <div class="newsletter-text">
+                        <h2>Get Special Travel Deals!</h2>
+                        <p>Subscribe to our newsletter and receive exclusive tour offers and visa updates directly in your inbox.</p>
+                    </div>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Info -->
+                <div class="footer-col">
+                    <a href="index.html" class="footer-brand">
+                        <i class="fa-solid fa-plane-departure"></i>
+                        Westwide <span>Travels</span>
+                    </a>
+                    <p class="footer-description">Your premier choice for unforgettable international tours and reliable visa application services. We turn travel dreams into reality.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link" style="background-color: #25D366;"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="services.html">Tour Packages</a>
+                        <a href="services.html#visas">Visa Services</a>
+                    </div>
+                </div>
+                
+                <!-- Support -->
+                <div class="footer-col">
+                    <h3 class="footer-heading">Support</h3>
+                    <div class="footer-links">
+                        <a href="contact.html">Contact Us</a>
+                        <a href="contact.html#faq">FAQs</a>
+                        <a href="blog.html">Travel Blog</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="footer-col">
+                    <h3 class="footer-heading">Contact Info</h3>
+                    <div class="footer-links">
+                        <p style="color: rgba(255,255,255,0.7); display: flex; gap: 10px; margin-bottom: 0.5rem;"><i class="fa-solid fa-location-dot" style="margin-top: 5px; color: var(--color-accent);"></i> 123 Travel Avenue, City Center, WP 45000</p>
+                        <p style="color: rgba(255,255,255,0.7); display: flex; gap: 10px; margin-bottom: 0.5rem;"><i class="fa-solid fa-phone" style="margin-top: 5px; color: var(--color-accent);"></i> +1 (555) 123-4567</p>
+                        <p style="color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fa-solid fa-envelope" style="margin-top: 5px; color: var(--color-accent);"></i> info@westwidetravels.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Westwide Travel and Tours. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
