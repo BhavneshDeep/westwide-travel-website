@@ -17,31 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2. Mobile Navigation Toggle ---
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
+    const mobileMenuBtn = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-list');
 
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', () => {
-            const isActive = navLinks.classList.contains('active-mobile');
+            navLinks.classList.toggle('active');
 
-            if (isActive) {
-                navLinks.classList.remove('active-mobile');
-                navLinks.style.display = '';
-                mobileMenuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
-            } else {
-                navLinks.classList.add('active-mobile');
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = '#ffffff';
-                navLinks.style.padding = '2rem';
-                navLinks.style.boxShadow = '0 10px 15px -3px rgba(0,0,0,0.1)';
-                navLinks.style.gap = '1.5rem';
-                navLinks.style.alignItems = 'flex-start';
+            // Icon change logic
+            if (navLinks.classList.contains('active')) {
                 mobileMenuBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+            } else {
+                mobileMenuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
             }
         });
     }
@@ -55,10 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
-                if (navLinks && navLinks.classList.contains('active-mobile')) {
-                    navLinks.classList.remove('active-mobile');
-                    navLinks.style.display = '';
-                    mobileMenuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    if(mobileMenuBtn) mobileMenuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
                 }
 
                 const headerOffset = 80;
@@ -225,20 +211,3 @@ document.addEventListener('DOMContentLoaded', () => {
         startSlider();
     }
 });
-
-// --- 9. Mobile Menu Toggle ---
-const mobileMenuBtn = document.getElementById('mobile-menu');
-const navLinks = document.getElementById('nav-list');
-
-if (mobileMenuBtn && navLinks) {
-    mobileMenuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-
-        // Icon change logic
-        if (navLinks.classList.contains('active')) {
-            mobileMenuBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-        } else {
-            mobileMenuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
-        }
-    });
-}
