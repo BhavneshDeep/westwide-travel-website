@@ -225,3 +225,20 @@ document.addEventListener('DOMContentLoaded', () => {
         startSlider();
     }
 });
+
+// --- 9. Mobile Menu Toggle ---
+const mobileMenuBtn = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-list');
+
+if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+
+        // Icon change logic
+        if (navLinks.classList.contains('active')) {
+            mobileMenuBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        } else {
+            mobileMenuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        }
+    });
+}

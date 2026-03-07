@@ -143,29 +143,37 @@
 
 <body>
 
-    <header class="navbar" style="background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    <header class="navbar"
+        style="background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;">
         <div class="container"
-            style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0;">
+            style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
             <a href="index.html" class="nav-brand"
                 style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
-                <img src="images/Logo.jpeg" alt="Westwide Logo" style="height: 60px; width: auto; object-fit: contain;">
+                <img src="images/Logo.jpeg" alt="Westwide Logo" style="height: 50px; width: auto;">
                 <div style="display: flex; flex-direction: column;">
-                    <span style="font-size: 1.5rem; font-weight: 800; color: #003399; line-height: 1;">WEST WIDE</span>
-                    <span style="font-size: 0.9rem; font-weight: 600; color: #E69138; letter-spacing: 1px;">TRAVEL &
+                    <span style="font-size: 1.2rem; font-weight: 800; color: #003399; line-height: 1;">WEST WIDE</span>
+                    <span style="font-size: 0.7rem; font-weight: 600; color: #E69138; letter-spacing: 1px;">TRAVEL &
                         TOURS</span>
                 </div>
             </a>
 
-            <nav class="nav-links">
+            <div class="menu-toggle" id="mobile-menu"
+                style="display: none; cursor: pointer; font-size: 1.5rem; color: #003399;">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <nav class="nav-links" id="nav-list">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About Us</a>
                 <a href="services.html" class="nav-link">Services</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
+                <a href="contact.html" class="btn-mobile-only" style="display: none;">Book Now</a>
             </nav>
 
             <div class="nav-actions">
-                <a href="contact.html" class="btn btn-primary" style="background-color: #003399; border: none;">Book
+                <a href="contact.html" class="btn btn-primary"
+                    style="background-color: #003399; border: none; padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px;">Book
                     Now</a>
             </div>
         </div>
