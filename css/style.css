@@ -148,7 +148,7 @@ ul {
   height: var(--nav-height);
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
-  z-index: 1000;
+  z-index: 9999;
   box-shadow: var(--shadow-sm);
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
@@ -388,13 +388,16 @@ main {
     top: 70px;
     left: -100%;
     /* Shuru mein menu bahar rahega */
+    display: flex;
     flex-direction: column;
-    background: #fff;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-primary); /* Dark Blue background for contrast */
     width: 100%;
     text-align: center;
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    z-index: 999;
+    z-index: 9999; /* Highest priority to remain visible */
     padding: 20px 0;
   }
 
@@ -407,7 +410,14 @@ main {
     padding: 15px;
     display: block;
     width: 100%;
-    border-bottom: 1px solid #eee;
+    color: #ffffff; /* White color for contrast */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Make sure hover color is visible and stands out against dark blue */
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-accent) !important;
   }
 
   .nav-actions {
@@ -416,9 +426,13 @@ main {
   }
 
   .btn-mobile-only {
-    display: block !important;
-    margin-top: 10px;
-    color: #003399;
+    display: inline-block !important;
+    margin-top: 15px;
+    color: #ffffff !important;
+    background-color: var(--color-accent);
     font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
   }
 }
