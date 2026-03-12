@@ -377,63 +377,94 @@ main {
 }
 
 /* Desktop view par menu toggle hide rahega */
+/* Mobile Header & Menu Logic */
 @media (max-width: 992px) {
-  .menu-toggle {
-    display: block !important;
-    /* Mobile par icon dikhega */
+  /* Ensure container pushes Logo to left, others to right */
+  .navbar .container {
+    justify-content: flex-end !important;
+    gap: 12px;
+    padding: 10px 15px !important;
   }
 
+  .nav-brand {
+    order: 1;
+    margin-right: auto; /* This pushes everything else to the right */
+  }
+
+  .nav-brand img {
+    max-height: 40px !important;
+    width: auto !important;
+  }
+  
+  .nav-brand span:first-child {
+    font-size: 1rem !important;
+  }
+  
+  .nav-brand span:last-child {
+    font-size: 0.6rem !important;
+  }
+
+  /* Unpack the nav-actions so its children become direct flex items of .container */
+  .nav-actions {
+    display: contents !important;
+  }
+
+  .currency-converter {
+    order: 2;
+    margin-right: 0 !important;
+    font-size: 0.75rem !important;
+  }
+
+  .menu-toggle {
+    display: block !important;
+    order: 3;
+    font-size: 1.4rem !important;
+  }
+
+  .nav-actions .btn-primary {
+    order: 4;
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+    white-space: nowrap;
+  }
+
+  /* Slide-in Mobile Menu */
   .nav-links {
     position: absolute;
     top: 70px;
     left: -100%;
-    /* Shuru mein menu bahar rahega */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: var(--color-primary); /* Dark Blue background for contrast */
+    background: var(--color-primary); 
     width: 100%;
     text-align: center;
     transition: 0.3s ease-in-out;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    z-index: 9999; /* Highest priority to remain visible */
+    z-index: 9999;
     padding: 20px 0;
   }
 
   .nav-links.active {
     left: 0;
-    /* Click karne par andar ayega */
   }
 
   .nav-link {
     padding: 15px;
     display: block;
     width: 100%;
-    color: #ffffff; /* White color for contrast */
+    color: #ffffff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  /* Make sure hover color is visible and stands out against dark blue */
   .nav-link:hover,
   .nav-link.active {
     color: var(--color-accent) !important;
   }
 
-  .nav-actions {
-    display: none;
-    /* Desktop wala button hide */
-  }
-
   .btn-mobile-only {
-    display: inline-block !important;
-    margin-top: 15px;
-    color: #ffffff !important;
-    background-color: var(--color-accent);
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
+    display: none !important; /* Not needed since we kept the desktop button via display: contents */
   }
 }
 
