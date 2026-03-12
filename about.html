@@ -46,7 +46,15 @@
                 <a href="contact.html" class="btn-mobile-only" style="display: none;">Book Now</a>
             </nav>
 
-            <div class="nav-actions">
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 0;">
+                <div class="currency-converter" style="display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 600; color: #003399; margin-right: 15px;">
+                    <select id="currency-select" style="border: none; background: transparent; font-weight: bold; color: #003399; cursor: pointer; outline: none;">
+                        <option value="USD">USD</option>
+                        <option value="AED">AED</option>
+                        <option value="SAR">SAR</option>
+                    </select>
+                    <span id="currency-result" style="color: #E69138;">... PKR</span>
+                </div>
                 <a href="contact.html" class="btn btn-primary"
                     style="background-color: #003399; border: none; padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px;">Book
                     Now</a>
@@ -235,12 +243,34 @@
                 style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
                 <p>&copy; 2026 Westwide Travel and Tours. All Rights Reserved.</p>
                 <p style="font-size: 0.9rem; color: #aaa; margin-top: 5px;">Developed by <strong
-                        style="color: white;">Bhavnesh Deep</strong></p>
+                        style="color: white;">Bhavnesh Karmani</strong></p>
             </div>
         </div>
     </footer>
 
     <script src="js/app.js"></script>
+
+    <!-- Floating WhatsApp Widget -->
+    <a href="https://wa.me/923053033023?text=Hi%20West%20Wide%20Travel,%20I%20need%20information%20regarding%20a%20Tourist%20Visa." target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Lead Generation Pop-up -->
+    <div class="lead-popup-overlay" id="leadPopup">
+        <div class="lead-popup-box">
+            <button class="lead-popup-close" id="closeLeadPopup"><i class="fa-solid fa-xmark"></i></button>
+            <div class="lead-popup-content">
+                <i class="fa-solid fa-passport" style="font-size: 3rem; color: #E69138; margin-bottom: 15px;"></i>
+                <h3 style="color: #003399; margin-bottom: 10px;">Looking for a Tourist Visa?</h3>
+                <p style="margin-bottom: 20px; color: #555;">Get a free consultation and personalized quote from our travel experts today.</p>
+                <form id="leadPopupForm" style="display: flex; flex-direction: column; gap: 10px;">
+                    <input type="text" placeholder="Your Name" required style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                    <input type="tel" placeholder="Phone / WhatsApp" required style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                    <button type="submit" class="btn btn-primary" style="background-color: #003399; padding: 10px; border: none;">Get a Free Quote</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

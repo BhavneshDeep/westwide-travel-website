@@ -210,4 +210,161 @@ document.addEventListener('DOMContentLoaded', () => {
 
         startSlider();
     }
+
+    // --- 9. Currency Converter ---
+    const currencySelect = document.getElementById('currency-select');
+    const currencyResult = document.getElementById('currency-result');
+    if (currencySelect && currencyResult) {
+        const fetchRates = async () => {
+            try {
+                const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                
+                window.exchangeRates = data.rates;
+                updateCurrency();
+            } catch (error) {
+                console.error('Error fetching currency rates:', error);
+                currencyResult.innerText = 'Error';
+            }
+        };
+
+        const updateCurrency = () => {
+            if (!window.exchangeRates) return;
+            const selectedCurrency = currencySelect.value;
+            const pkrRate = window.exchangeRates.PKR;
+            const selectedRate = window.exchangeRates[selectedCurrency];
+            
+            if (pkrRate && selectedRate) {
+                const converted = pkrRate / selectedRate;
+                currencyResult.innerText = converted.toFixed(2) + ' PKR';
+            }
+        };
+
+        currencySelect.addEventListener('change', updateCurrency);
+        fetchRates();
+    }
+
+    // --- 10. Lead Generation Pop-up (After 30 seconds) ---
+    const leadPopup = document.getElementById('leadPopup');
+    const closeLeadPopup = document.getElementById('closeLeadPopup');
+    const leadPopupForm = document.getElementById('leadPopupForm');
+    
+    if (leadPopup) {
+        setTimeout(() => {
+            if (!sessionStorage.getItem('leadPopupShown')) {
+                leadPopup.classList.add('show');
+                sessionStorage.setItem('leadPopupShown', 'true');
+            }
+        }, 30000);
+
+        if (closeLeadPopup) {
+            closeLeadPopup.addEventListener('click', () => {
+                leadPopup.classList.remove('show');
+            });
+        }
+
+        if (leadPopupForm) {
+            leadPopupForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Prevent page refresh
+                
+                // Collect Data
+                const inputs = leadPopupForm.querySelectorAll('input');
+                const name = inputs[0].value.trim();
+                const phone = inputs[1].value.trim();
+                
+                // Form Validation
+                if (name && phone) {
+                    // Construct URL
+                    const message = `Hi West Wide Travel, I need a tourist visa quote.\n*Name:* ${name}\n*Phone:* ${phone}`;
+                    const whatsappUrl = `https://wa.me/923053033023?text=${encodeURIComponent(message)}`;
+                    
+                    // Redirect
+                    window.open(whatsappUrl, '_blank');
+                    
+                    // UI Feedback
+                    const btn = leadPopupForm.querySelector('button[type="submit"]');
+                    const originalText = btn.innerText;
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Redirecting...';
+                    btn.style.backgroundColor = '#25d366';
+                    
+                    setTimeout(() => {
+                        leadPopup.classList.remove('show');
+                        btn.innerHTML = originalText;
+                        btn.style.backgroundColor = '#003399';
+                        leadPopupForm.reset();
+                    }, 2000);
+                }
+            });
+        }
+    }
+
+    // --- 11. Visa Data & Requirements Modal ---
+    const visaData = {
+        "Saudi Arabia": ["Original Passport (6 months validity)", "2 Passport Size Photos", "Vaccination Certificate", "Biometric verification", "National ID Card"],
+        "UAE": ["Passport Copy (Front & Back)", "1 Passport Size Photo (White Background)", "National ID Card Copy", "Travel Itinerary", "Hotel Reservation"],
+        "Turkey": ["Original Passport", "Bank Statement (Last 6 months)", "Employment Letter / NTN", "Polio Vaccination Certificate", "Travel Insurance", "Hotel & Flight Booking"],
+        "Azerbaijan": ["Passport Copy (Valid for 6 months)", "National ID Card Copy", "Personal Photo", "E-Visa processing fee"],
+        "USA": ["Original Passport", "DS-160 Confirmation Page", "Appointment Confirmation", "Bank Statement (1 year)", "Property Documents (if any)", "Tax Returns (Last 3 years)", "Family Registration Certificate"],
+        "United Kingdom": ["Original Passport", "Bank Statement (Last 6 months)", "Source of Income Proof", "Tax Returns", "Family Registration Certificate", "Property Documents", "Hotel/Flight Reservation"],
+        "Schengen Area": ["Original Passport (Valid for 3 months beyond stay)", "Schengen Visa Application Form", "Travel Health Insurance (Min €30,000 coverage)", "Flight Itinerary", "Proof of Accommodation", "Bank Statement (Last 6 months)", "Employment Proof"],
+        "Australia": ["Original Passport", "Completed Form 1419", "Bank Statement (Last 6 months)", "Tax Returns", "Family Details", "Employment Letter / Business Details", "Travel History Details"],
+        "default": ["Original Passport (6 months validity)", "National ID Copy", "2 Passport Size Photos", "Bank Statement (Last 3-6 months)", "Flight Confirmation", "Hotel Reservation"]
+    };
+
+    const viewReqBtns = document.querySelectorAll('.view-req-btn');
+    const visaReqPopup = document.getElementById('visaReqPopup');
+    const closeVisaReqPopup = document.getElementById('closeVisaReqPopup');
+    const reqCountryName = document.getElementById('reqCountryName');
+    const reqList = document.getElementById('reqList');
+
+    if (viewReqBtns.length > 0 && visaReqPopup) {
+        viewReqBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const card = e.target.closest('.country-card');
+                const country = card.querySelector('.country-name').innerText;
+                
+                reqCountryName.innerText = country + " Requirements";
+                reqList.innerHTML = '';
+                
+                const requirements = visaData[country] || visaData["default"];
+                requirements.forEach(req => {
+                    const li = document.createElement('li');
+                    li.innerHTML = '<i class="fa-solid fa-check" style="color: #E69138; margin-right: 10px;"></i>' + req;
+                    li.style.marginBottom = '10px';
+                    li.style.fontSize = '1.05rem';
+                    reqList.appendChild(li);
+                });
+
+                visaReqPopup.classList.add('show');
+            });
+        });
+
+        if (closeVisaReqPopup) {
+            closeVisaReqPopup.addEventListener('click', () => {
+                visaReqPopup.classList.remove('show');
+            });
+        }
+    }
+
+    // --- 12. Smart Search functionality for Visa Cards ---
+    const visaSearchInput = document.getElementById('visaSearchInput');
+    const visaCards = document.querySelectorAll('#visaCountryGrid .country-card');
+
+    if (visaSearchInput && visaCards.length > 0) {
+        visaSearchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            
+            visaCards.forEach(card => {
+                const countryName = card.querySelector('.country-name').innerText.toLowerCase();
+                const textContent = card.innerText.toLowerCase();
+                
+                if (countryName.includes(searchTerm) || textContent.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    }
 });

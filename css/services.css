@@ -8,7 +8,7 @@
 
 .country-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     margin-top: 3rem;
 }
@@ -24,6 +24,8 @@
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .country-card::before {
@@ -41,7 +43,7 @@
 
 .country-card:hover {
     box-shadow: var(--shadow-lg);
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.02);
 }
 
 .country-card:hover::before {
@@ -229,6 +231,9 @@
         flex-wrap: wrap;
         gap: 1rem;
     }
+    .country-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 576px) {
@@ -237,5 +242,8 @@
     }
     .tour-actions {
         flex-direction: column;
+    }
+    .country-grid {
+        grid-template-columns: 1fr;
     }
 }
