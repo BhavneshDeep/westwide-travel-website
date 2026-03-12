@@ -47,7 +47,15 @@
                 <a href="contact.html" class="btn-mobile-only" style="display: none;">Book Now</a>
             </nav>
 
-            <div class="nav-actions">
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 0;">
+                <div class="currency-converter" style="display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 600; color: #003399; margin-right: 15px;">
+                    <select id="currency-select" style="border: none; background: transparent; font-weight: bold; color: #003399; cursor: pointer; outline: none;">
+                        <option value="USD">USD</option>
+                        <option value="AED">AED</option>
+                        <option value="SAR">SAR</option>
+                    </select>
+                    <span id="currency-result" style="color: #E69138;">... PKR</span>
+                </div>
                 <a href="contact.html" class="btn btn-primary"
                     style="background-color: #003399; border: none; padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px;">Book
                     Now</a>
@@ -75,66 +83,370 @@
                         get started with the application process right away.</p>
                 </div>
 
-                <div class="country-grid">
-                    <!-- USA Visa -->
-                    <div class="country-card animate-on-scroll">
-                        <div class="country-flag">
-                            <img src="https://flagcdn.com/w160/us.png" alt="United States Flag">
+                <div class="visa-search-container" style="max-width: 600px; margin: 0 auto 30px auto; display: flex; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 50px; overflow: hidden; background: #fff;">
+                    <input type="text" id="visaSearchInput" placeholder="Search for a country (e.g., USA, Dubai)..." style="flex: 1; padding: 15px 25px; border: none; outline: none; font-size: 1rem; color: #333;">
+                    <button style="padding: 15px 25px; background: #003399; color: white; border: none; font-size: 1.1rem; cursor: pointer; transition: background 0.3s;"><i class="fa-solid fa-search"></i></button>
+                </div>
+                <div class="country-grid" id="visaCountryGrid">
+                    <!-- Row 1 (Hot Sellers) -->
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/sa.png" alt="Saudi Arabia"></div>
+                        <h3 class="country-name">Saudi Arabia</h3>
+                        <p>Umrah and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">Umrah</span><span class="visa-type-badge">Tourist</span>
                         </div>
-                        <h3>United States</h3>
-                        <p>B1/B2 Visitor Visas, Study Visas, and Business entry applications.</p>
-                        <div>
-                            <span class="visa-type-badge">Tourist</span>
-                            <span class="visa-type-badge">Business</span>
-                            <span class="visa-type-badge">Student</span>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
                         </div>
-                        <a href="contact.html" class="btn btn-outline"
-                            style="width: 100%; margin-top: 1.5rem; padding: 0.5rem;">Apply Now</a>
                     </div>
 
-                    <!-- UK Visa -->
-                    <div class="country-card animate-on-scroll" style="animation-delay: 0.1s;">
-                        <div class="country-flag">
-                            <img src="https://flagcdn.com/w160/gb.png" alt="United Kingdom Flag">
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/ae.png" alt="UAE"></div>
+                        <h3 class="country-name">UAE</h3>
+                        <p>Dubai/Abu Dhabi Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
                         </div>
-                        <h3>United Kingdom</h3>
-                        <p>Standard Visitor Visas, Tier Categories, and settlement services.</p>
-                        <div>
-                            <span class="visa-type-badge">Standard Visit</span>
-                            <span class="visa-type-badge">Study</span>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
                         </div>
-                        <a href="contact.html" class="btn btn-outline"
-                            style="width: 100%; margin-top: 1.5rem; padding: 0.5rem;">Apply Now</a>
                     </div>
 
-                    <!-- Schengen Visa -->
-                    <div class="country-card animate-on-scroll" style="animation-delay: 0.2s;">
-                        <div class="country-flag">
-                            <img src="https://flagcdn.com/w160/eu.png" alt="European Union Flag">
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/tr.png" alt="Turkey"></div>
+                        <h3 class="country-name">Turkey</h3>
+                        <p>Sticker and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">Sticker</span><span class="visa-type-badge">Tourist</span>
                         </div>
-                        <h3>Schengen Area</h3>
-                        <p>Uniform Schengen Visas valid across 27 European countries.</p>
-                        <div>
-                            <span class="visa-type-badge">Tourist</span>
-                            <span class="visa-type-badge">Transit</span>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
                         </div>
-                        <a href="contact.html" class="btn btn-outline"
-                            style="width: 100%; margin-top: 1.5rem; padding: 0.5rem;">Apply Now</a>
                     </div>
 
-                    <!-- UAE Visa -->
-                    <div class="country-card animate-on-scroll" style="animation-delay: 0.3s;">
-                        <div class="country-flag">
-                            <img src="https://flagcdn.com/w160/ae.png" alt="UAE Flag">
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/az.png" alt="Azerbaijan"></div>
+                        <h3 class="country-name">Azerbaijan</h3>
+                        <p>ASAN Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
                         </div>
-                        <h3>United Arab Emirates</h3>
-                        <p>E-Visas, 30-day, and 60-day tourist visa fast-track processing.</p>
-                        <div>
-                            <span class="visa-type-badge">E-Visa</span>
-                            <span class="visa-type-badge">Tourist</span>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
                         </div>
-                        <a href="contact.html" class="btn btn-outline"
-                            style="width: 100%; margin-top: 1.5rem; padding: 0.5rem;">Apply Now</a>
+                    </div>
+
+                    <!-- Row 2 (Premium) -->
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/us.png" alt="USA"></div>
+                        <h3 class="country-name">USA</h3>
+                        <p>B1/B2 Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">Business</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/gb.png" alt="United Kingdom"></div>
+                        <h3 class="country-name">United Kingdom</h3>
+                        <p>Standard Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">Standard Visit</span><span
+                                class="visa-type-badge">Tourist</span></div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/eu.png" alt="Schengen Area"></div>
+                        <h3 class="country-name">Schengen Area</h3>
+                        <p>Europe Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">Schengen</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/au.png" alt="Australia"></div>
+                        <h3 class="country-name">Australia</h3>
+                        <p>Visitor Subclass 600 Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">Visitor</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <!-- Row 3+ (Alphabetical/Regional) -->
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/th.png" alt="Thailand"></div>
+                        <h3 class="country-name">Thailand</h3>
+                        <p>E-Visa and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/my.png" alt="Malaysia"></div>
+                        <h3 class="country-name">Malaysia</h3>
+                        <p>Digital E-Visa and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/sg.png" alt="Singapore"></div>
+                        <h3 class="country-name">Singapore</h3>
+                        <p>E-Visa and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/kh.png" alt="Cambodia"></div>
+                        <h3 class="country-name">Cambodia</h3>
+                        <p>E-Visa and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/vn.png" alt="Vietnam"></div>
+                        <h3 class="country-name">Vietnam</h3>
+                        <p>Approval letter and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/id.png" alt="Indonesia"></div>
+                        <h3 class="country-name">Indonesia</h3>
+                        <p>Bali E-Visa and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/ge.png" alt="Georgia"></div>
+                        <h3 class="country-name">Georgia</h3>
+                        <p>E-Visa and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/nz.png" alt="New Zealand"></div>
+                        <h3 class="country-name">New Zealand</h3>
+                        <p>General Visitor and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/ke.png" alt="Kenya"></div>
+                        <h3 class="country-name">Kenya</h3>
+                        <p>Electronic Travel Authorization (eTA) Tourist Visa.</p>
+                        <div><span class="visa-type-badge">eTA</span><span class="visa-type-badge">Tourist</span></div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/za.png" alt="South Africa"></div>
+                        <h3 class="country-name">South Africa</h3>
+                        <p>Visitor and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">Sticker</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/eg.png" alt="Egypt"></div>
+                        <h3 class="country-name">Egypt</h3>
+                        <p>Sticker and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">Sticker</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/ma.png" alt="Morocco"></div>
+                        <h3 class="country-name">Morocco</h3>
+                        <p>Sticker and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">Sticker</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/mu.png" alt="Mauritius"></div>
+                        <h3 class="country-name">Mauritius</h3>
+                        <p>Honeymoon and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/om.png" alt="Oman"></div>
+                        <h3 class="country-name">Oman</h3>
+                        <p>GCC Residency and Tourist E-Visas.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/bh.png" alt="Bahrain"></div>
+                        <h3 class="country-name">Bahrain</h3>
+                        <p>E-Visas for Leisure and Tourism.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/lk.png" alt="Sri Lanka"></div>
+                        <h3 class="country-name">Sri Lanka</h3>
+                        <p>ETA and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">ETA</span><span class="visa-type-badge">Tourist</span></div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/bd.png" alt="Bangladesh"></div>
+                        <h3 class="country-name">Bangladesh</h3>
+                        <p>Sticker and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">Sticker</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/np.png" alt="Nepal"></div>
+                        <h3 class="country-name">Nepal</h3>
+                        <p>Trekking and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/mv.png" alt="Maldives"></div>
+                        <h3 class="country-name">Maldives</h3>
+                        <p>Imuga and Tourist entry assistance.</p>
+                        <div><span class="visa-type-badge">Imuga</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/uz.png" alt="Uzbekistan"></div>
+                        <h3 class="country-name">Uzbekistan</h3>
+                        <p>Silk Road and Tourist Visa Services.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/tj.png" alt="Tajikistan"></div>
+                        <h3 class="country-name">Tajikistan</h3>
+                        <p>E-Visa for GBAO and Tourism.</p>
+                        <div><span class="visa-type-badge">E-Visa</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="country-card glass-card animate-on-scroll">
+                        <div class="country-flag"><img src="https://flagcdn.com/w160/lb.png" alt="Lebanon"></div>
+                        <h3 class="country-name">Lebanon</h3>
+                        <p>Sticker Visas and Tourist Services.</p>
+                        <div><span class="visa-type-badge">Sticker</span><span class="visa-type-badge">Tourist</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 1rem;">
+                            <button class="btn btn-primary view-req-btn" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; border: none;">Requirements</button>
+                            <a href="contact.html" class="btn btn-outline" style="width: 100%; padding: 0.8rem; font-size: 0.9rem; text-align: center; display: flex; align-items: center; justify-content: center;">Apply</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -304,12 +616,49 @@
                 style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
                 <p>&copy; 2026 Westwide Travel and Tours. All Rights Reserved.</p>
                 <p style="font-size: 0.9rem; color: #aaa; margin-top: 5px;">Developed by <strong
-                        style="color: white;">Bhavnesh Deep</strong></p>
+                        style="color: white;">Bhavnesh Karmani</strong></p>
             </div>
         </div>
     </footer>
 
     <script src="js/app.js"></script>
+
+    <!-- Floating WhatsApp Widget -->
+    <a href="https://wa.me/923053033023?text=Hi%20West%20Wide%20Travel,%20I%20need%20information%20regarding%20a%20Tourist%20Visa." target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Lead Generation Pop-up -->
+    <div class="lead-popup-overlay" id="leadPopup">
+        <div class="lead-popup-box">
+            <button class="lead-popup-close" id="closeLeadPopup"><i class="fa-solid fa-xmark"></i></button>
+            <div class="lead-popup-content">
+                <i class="fa-solid fa-passport" style="font-size: 3rem; color: #E69138; margin-bottom: 15px;"></i>
+                <h3 style="color: #003399; margin-bottom: 10px;">Looking for a Tourist Visa?</h3>
+                <p style="margin-bottom: 20px; color: #555;">Get a free consultation and personalized quote from our travel experts today.</p>
+                <form id="leadPopupForm" style="display: flex; flex-direction: column; gap: 10px;">
+                    <input type="text" placeholder="Your Name" required style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                    <input type="tel" placeholder="Phone / WhatsApp" required style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                    <button type="submit" class="btn btn-primary" style="background-color: #003399; padding: 10px; border: none;">Get a Free Quote</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visa Requirements Modal -->
+    <div class="lead-popup-overlay" id="visaReqPopup">
+        <div class="lead-popup-box" style="text-align: left; max-width: 500px;">
+            <button class="lead-popup-close" id="closeVisaReqPopup"><i class="fa-solid fa-xmark"></i></button>
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 15px;">
+                <i class="fa-solid fa-list-check" style="font-size: 2rem; color: #003399;"></i>
+                <h3 style="color: #003399; margin: 0; font-family: 'Outfit', sans-serif;" id="reqCountryName">Visa Requirements</h3>
+            </div>
+            <ul id="reqList" style="list-style: none; padding: 0; margin-bottom: 25px; color: #444; font-family: 'Inter', sans-serif;">
+                <!-- Requirements injected via JS -->
+            </ul>
+            <a href="contact.html" class="btn btn-primary" style="width: 100%; display: block; text-align: center; background-color: #E69138; border: none;">Apply Now</a>
+        </div>
+    </div>
 </body>
 
 </html>
