@@ -301,15 +301,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 11. Visa Data & Requirements Modal ---
     const visaData = {
-        "Saudi Arabia": ["Original Passport (6 months validity)", "2 Passport Size Photos", "Vaccination Certificate", "Biometric verification", "National ID Card"],
-        "UAE": ["Passport Copy (Front & Back)", "1 Passport Size Photo (White Background)", "National ID Card Copy", "Travel Itinerary", "Hotel Reservation"],
-        "Turkey": ["Original Passport", "Bank Statement (Last 6 months)", "Employment Letter / NTN", "Polio Vaccination Certificate", "Travel Insurance", "Hotel & Flight Booking"],
-        "Azerbaijan": ["Passport Copy (Valid for 6 months)", "National ID Card Copy", "Personal Photo", "E-Visa processing fee"],
-        "USA": ["Original Passport", "DS-160 Confirmation Page", "Appointment Confirmation", "Bank Statement (1 year)", "Property Documents (if any)", "Tax Returns (Last 3 years)", "Family Registration Certificate"],
-        "United Kingdom": ["Original Passport", "Bank Statement (Last 6 months)", "Source of Income Proof", "Tax Returns", "Family Registration Certificate", "Property Documents", "Hotel/Flight Reservation"],
-        "Schengen Area": ["Original Passport (Valid for 3 months beyond stay)", "Schengen Visa Application Form", "Travel Health Insurance (Min €30,000 coverage)", "Flight Itinerary", "Proof of Accommodation", "Bank Statement (Last 6 months)", "Employment Proof"],
-        "Australia": ["Original Passport", "Completed Form 1419", "Bank Statement (Last 6 months)", "Tax Returns", "Family Details", "Employment Letter / Business Details", "Travel History Details"],
-        "default": ["Original Passport (6 months validity)", "National ID Copy", "2 Passport Size Photos", "Bank Statement (Last 3-6 months)", "Flight Confirmation", "Hotel Reservation"]
+        "Saudi Arabia": ["Original Passport with at least 6 months validity", "1 Passport size photo", "Polio Vaccine Certificate", "Biometric verification", "National ID Card"],
+        "UAE": ["Original Passport with at least 6 months validity", "1 Passport Size Photo (White Background)", "National ID Card Copy", "Travel Itinerary", "Hotel Reservation", "Previous Visas (if any)"],
+        "Turkey": ["Original Passport with at least 6 months validity", "Account Maintenance Certificate (Original with Bank Sign/Stamp)", "Closing balance: 6 Lac per person", "Employment Letter / NTN", "Polio Vaccination Certificate", "Travel Insurance", "Hotel & Flight Booking"],
+        "Azerbaijan": ["Original Passport with at least 6 months validity", "National ID Card Copy"],
+        "USA": ["Passport (Original with 6 months validity)", "Education History (Month and year wise)", "Phone Numbers (Used in the last five years)", "Email Addresses (Used in the last five years)", "Family/Relatives in USA (Details of any family member or relative living there)", "Source of Income (Business Letterhead / Employment Letter)", "Monthly Income (Approximate monthly earnings)", "Travel History (Details of previous international trips)", "Expected Traveling Dates", "Previous Rejections (Any visa rejection history)", "CNIC Copy", "Target State (Which US state you plan to visit)"],
+        "United Kingdom": ["Original Passport with at least 6 months validity", "Old & Previous Passports", "Account Maintenance Certificate with 2 Million PKR closing balance per person", "Source of Income Proof", "Tax Returns (Last 3 Years)", "Family Registration Certificate", "Property Documents", "Hotel/Flight Reservation", "Travel History documents", "Invitation Letter"],
+        "Schengen Area": ["Original Passport with at least 6 months validity", "Old & Previous Passports", "Account Maintenance Certificate with 2 Million PKR closing balance per person", "Source of Income Proof", "Tax Returns (Last 3 Years)", "Family Registration Certificate", "Property Documents", "Hotel/Flight Reservation", "Travel History documents", "Invitation Letter", "Travel Insurance"],
+        "Australia": ["Original Passport with at least 6 months validity", "Old & Previous Passports", "Account Maintenance Certificate with 2 Million PKR closing balance per person", "Source of Income Proof", "Tax Returns (Last 3 Years)", "Family Registration Certificate", "Property Documents", "Hotel/Flight Reservation", "Travel History documents", "Invitation Letter"],
+        "Thailand": ["Original Passport with at least 6 months validity", "National ID Copy", "Photo with White Background", "6 Month Bank Statement", "Account Maintenance Certificate", "Flight Confirmation", "Hotel Reservation"],
+        "Singapore": ["Original Passport with at least 6 months validity", "National ID Copy", "2 Passport Size Photos", "Flight Confirmation", "Hotel Reservation"],
+        "Cambodia": ["Original Passport with at least 6 months validity", "National ID Copy", "1 Photo", "Bank Statement (Last 3-6 months)", "Flight Confirmation", "Hotel Reservation"],
+        "Indonesia": ["Original Passport with at least 6 months validity", "National ID Copy", "2 Passport Size Photos", "Bank Statement with Maintenance Certificate", "Closing balance: 6 Lac", "Flight Confirmation", "Hotel Reservation"],
+        "Kenya": ["Original Passport with at least 6 months validity", "Photo", "ID Card Copy"],
+        "Sri Lanka": ["Original Passport with at least 6 months validity", "ID Card Copy"],
+        "default": ["Original Passport with at least 6 months validity", "National ID Copy", "2 Passport Size Photos", "Bank Statement (Last 3-6 months)", "Flight Confirmation", "Hotel Reservation"]
     };
 
     const viewReqBtns = document.querySelectorAll('.view-req-btn');
@@ -366,5 +372,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+    }
+    // --- 13. Simulated Visa Approval Notifications ---
+    const visaNotification = document.getElementById('visa-notification');
+    const notificationText = document.getElementById('notification-text');
+
+    if (visaNotification && notificationText) {
+        const names = ["Zubair", "Mehak", "Farhan", "Dr. Sameer", "Mrs. Khan", "Bilal", "Ayesha", "Rajesh", "Haris", "Usman", "Sara", "Ali"];
+        const locations = ["Karachi", "Lahore", "Islamabad", "Multan", "Faisalabad", "Peshawar", "Quetta"];
+        const countries = ["UK", "USA", "Turkey", "Azerbaijan", "Thailand", "UAE", "Saudi Arabia", "Malaysia", "Schengen"];
+        
+        // Realistic time frameworks
+        const freshTimes = ['Just Now', '4 mins ago', '12 mins ago'];
+        const earlierTodayTimes = ['3 hours ago', 'Today, 11:15 AM'];
+        const yesterdayTimes = ['Yesterday', 'Yesterday afternoon', '20 hours ago'];
+        const pastDaysTimes = ['2 days ago', 'Last Tuesday', '48 hours ago'];
+        const allTimeFrames = [...freshTimes, ...earlierTodayTimes, ...yesterdayTimes, ...pastDaysTimes];
+
+        const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+        const triggerNotification = () => {
+            const timeAgo = getRandomElement(allTimeFrames);
+            const name = getRandomElement(names);
+            const location = getRandomElement(locations);
+            const country = getRandomElement(countries);
+
+            notificationText.innerText = `${name} from ${location} - ${country} Visa Approved (${timeAgo})`;
+            
+            // Show Notification
+            visaNotification.style.transform = 'translateX(0)';
+
+            // Hide after 6 seconds
+            setTimeout(() => {
+                visaNotification.style.transform = 'translateX(-150%)';
+            }, 6000);
+        };
+
+        // Trigger first notification after 5 seconds, then randomly every 30 to 60 seconds
+        setTimeout(() => {
+            triggerNotification();
+            setInterval(() => {
+                triggerNotification();
+            }, Math.floor(Math.random() * 30000) + 30000);
+        }, 5000);
     }
 });

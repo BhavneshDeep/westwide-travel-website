@@ -71,6 +71,13 @@
             <div class="container page-header-content animate-on-scroll">
                 <h1>Our Services</h1>
                 <p>Global Visas & Curated Tour Packages</p>
+                <div style="margin-top: 30px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 15px 30px; border-radius: 50px; display: inline-block; border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div style="font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 5px;">98.2% Approval Rate &nbsp;|&nbsp; 12k+ Visas Processed</div>
+                    <div style="font-size: 0.9rem; color: #ddd; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <span style="display: inline-block; width: 10px; height: 10px; background-color: #25d366; border-radius: 50%; box-shadow: 0 0 10px #25d366; animation: pulse 2s infinite;"></span>
+                        <span id="live-viewers">7</span> people currently viewing visa requirements
+                    </div>
+                </div>
             </div>
         </header>
 
@@ -502,7 +509,7 @@
                     <!-- Tour Item 2 -->
                     <div class="tour-list-item animate-on-scroll">
                         <div class="tour-list-img"
-                            style="background-image: url('https://images.unsplash.com/photo-1498623116890-37e912163d5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                            style="background-image: url('https://images.unsplash.com/photo-1498623116890-37e912163d5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&fm=webp');" aria-label="Ancient Rome ruins Italy">
                             <div class="tour-list-badge">Cultural Explorer</div>
                         </div>
                         <div class="tour-list-content">
@@ -539,7 +546,7 @@
                     <!-- Tour Item 3 -->
                     <div class="tour-list-item animate-on-scroll">
                         <div class="tour-list-img"
-                            style="background-image: url('https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                            style="background-image: url('https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&fm=webp');" aria-label="Lush green temple landscape in Thailand">
                             <div class="tour-list-badge">Best Seller</div>
                         </div>
                         <div class="tour-list-content">
@@ -627,6 +634,20 @@
     <a href="https://wa.me/923053033023?text=Hi%20West%20Wide%20Travel,%20I%20need%20information%20regarding%20a%20Tourist%20Visa." target="_blank" class="whatsapp-float">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <!-- Visa Approval Notification -->
+    <div id="visa-notification" style="position: fixed; bottom: 20px; left: 20px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 15px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 15px; transform: translateX(-150%); transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 999; max-width: 320px; border-left: 4px solid #25d366;">
+        <div style="width: 45px; height: 45px; border-radius: 50%; background-color: #e8f5e9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative;">
+            <i class="fa-solid fa-stamp" style="color: #2e7d32; font-size: 1.5rem; opacity: 0.8;"></i>
+            <span style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; background: #4caf50; border-radius: 50%; border: 2px solid white;"></span>
+        </div>
+        <div style="flex-grow: 1;">
+            <div id="notification-text" style="font-size: 0.95rem; font-weight: 600; color: #333; margin-bottom: 3px; font-family: 'Inter', sans-serif;">Arsalan from Karachi - UK Visa Approved (2 mins ago)</div>
+            <div style="font-size: 0.8rem; color: #2e7d32; font-weight: 500; display: flex; align-items: center; gap: 5px;">
+                <i class="fa-solid fa-circle-check"></i> Verified Approval
+            </div>
+        </div>
+    </div>
 
     <!-- Lead Generation Pop-up -->
     <div class="lead-popup-overlay" id="leadPopup">
