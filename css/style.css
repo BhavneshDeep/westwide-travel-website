@@ -561,3 +561,26 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
 }
+
+/* --- Auto-Slider for Premium Packages --- */
+.package-slider .slider-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+}
+
+.package-slider .slider-img.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.package-slider .ptc-price-badge {
+    z-index: 3;
+}

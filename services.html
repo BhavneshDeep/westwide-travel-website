@@ -468,114 +468,238 @@
                         curated tours.</p>
                 </div>
 
-                <div class="tours-list">
-                    <!-- Tour Item 1 -->
-                    <div class="tour-list-item animate-on-scroll">
-                        <div class="tour-list-img"
-                            style="background-image: url('https://images.unsplash.com/photo-1534008897995-27a92afeb162?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
-                            <div class="tour-list-badge">Honeymoon Special</div>
+                <div class="tour-packages-grid-container">
+                    <style>
+                        .tour-packages-grid {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 2rem;
+                            margin-top: 2rem;
+                        }
+                        .premium-tour-card {
+                            background: #fff;
+                            border-radius: 15px;
+                            overflow: hidden;
+                            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                            border: 1px solid #f1f5f9;
+                            transition: all 0.3s ease;
+                            display: flex;
+                            flex-direction: column;
+                            height: 100%;
+                        }
+                        .premium-tour-card:hover {
+                            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                            transform: translateY(-5px);
+                        }
+                        .package-slider {
+                            height: 220px;
+                            position: relative;
+                            overflow: hidden;
+                        }
+                        .ptc-price-badge {
+                            position: absolute;
+                            bottom: -15px;
+                            right: 20px;
+                            background: #E69138;
+                            color: #fff;
+                            padding: 8px 15px;
+                            border-radius: 20px;
+                            font-weight: bold;
+                            box-shadow: 0 4px 10px rgba(230, 145, 56, 0.4);
+                            font-size: 0.95rem;
+                            z-index: 3;
+                        }
+                        .ptc-content {
+                            padding: 2.5rem 1.5rem 1.5rem;
+                            display: flex;
+                            flex-direction: column;
+                            flex-grow: 1;
+                        }
+                        .ptc-title {
+                            color: #003399;
+                            font-size: 1.3rem;
+                            margin-bottom: 0.5rem;
+                            font-weight: 700;
+                            line-height: 1.3;
+                        }
+                        .ptc-duration {
+                            color: #E69138;
+                            font-size: 0.9rem;
+                            margin-bottom: 1rem;
+                            font-weight: 600;
+                            display: flex;
+                            align-items: center;
+                            gap: 5px;
+                        }
+                        .ptc-details {
+                            list-style: none;
+                            padding: 0;
+                            margin: 0 0 1.5rem 0;
+                            font-size: 0.9rem;
+                            color: #555;
+                            flex-grow: 1;
+                        }
+                        .ptc-details li {
+                            margin-bottom: 10px;
+                            display: flex;
+                            align-items: flex-start;
+                            gap: 10px;
+                            line-height: 1.4;
+                        }
+                        .ptc-details li i {
+                            color: #003399;
+                            margin-top: 3px;
+                            font-size: 0.85rem;
+                            min-width: 15px;
+                        }
+                        .ptc-actions {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 10px;
+                            margin-top: auto;
+                        }
+                        .ptc-btn-primary {
+                            background: #003399;
+                            color: #fff;
+                            text-align: center;
+                            padding: 12px;
+                            border-radius: 8px;
+                            text-decoration: none;
+                            font-weight: 600;
+                            transition: background 0.3s;
+                            border: none;
+                            cursor: pointer;
+                            font-size: 1rem;
+                            width: 100%;
+                            display: block;
+                        }
+                        .ptc-btn-primary:hover {
+                            background: #002266;
+                            color: #fff;
+                        }
+                        .ptc-btn-outline {
+                            background: transparent;
+                            color: #003399;
+                            text-align: center;
+                            padding: 12px;
+                            border-radius: 8px;
+                            text-decoration: none;
+                            font-weight: 600;
+                            border: 2px solid #003399;
+                            transition: all 0.3s;
+                            cursor: pointer;
+                            font-size: 1rem;
+                            width: 100%;
+                            display: block;
+                        }
+                        .ptc-btn-outline:hover {
+                            background: #f0f4f8;
+                        }
+                        @media (max-width: 991px) {
+                            .tour-packages-grid {
+                                grid-template-columns: repeat(2, 1fr);
+                            }
+                        }
+                        @media (max-width: 768px) {
+                            .tour-packages-grid {
+                                grid-template-columns: 1fr;
+                            }
+                        }
+                    </style>
+                    <div class="tour-packages-grid">
+                        <!-- Package 1: Dubai -->
+                        <div class="premium-tour-card animate-on-scroll">
+                            <div class="package-slider">
+                                <div class="slider-img active" style="background-image: url('images/dubai1.jpg');"></div>
+                                <div class="slider-img" style="background-image: url('images/dubai2.jpg');"></div>
+                                <div class="slider-img" style="background-image: url('images/dubai3.jpg');"></div>
+                                <div class="ptc-price-badge">Rs. 125,000/-</div>
+                            </div>
+                            <div class="ptc-content">
+                                <h3 class="ptc-title">06 Days Dubai Luxury Tour</h3>
+                                <div class="ptc-duration">
+                                    <i class="fa-solid fa-clock"></i> 05 Nights / 06 Days
+                                </div>
+                                <ul class="ptc-details">
+                                    <li><i class="fa-solid fa-star"></i> <span><strong>Highlights:</strong> 3-Star Hotel with Breakfast, 30 Days Dubai Visa, Half Day City Tour, Desert Safari with BBQ Dinner, and Marina Dhow Cruise with Dinner</span></li>
+                                    <li><i class="fa-solid fa-car"></i> <span><strong>Transfers:</strong> Complete return transfers included (Airport & Tours)</span></li>
+                                </ul>
+                                <div class="ptc-actions">
+                                    <button class="ptc-btn-primary">Requirements</button>
+                                    <a href="contact.html?package=dubai-luxury" class="ptc-btn-outline">Apply Now</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="tour-list-content">
-                            <div class="tour-list-header">
-                                <div>
-                                    <h2>Magical Maldives Retreat</h2>
-                                    <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Male Atoll,
-                                        Maldives</div>
-                                </div>
-                                <div class="tour-price-box">
-                                    <span>Starting from</span>
-                                    <div class="price">$1,499</div>
-                                </div>
+
+                        <!-- Package 2: Thailand -->
+                        <div class="premium-tour-card animate-on-scroll">
+                            <div class="package-slider">
+                                <div class="slider-img active" style="background-image: url('images/thailand1.jpg');"></div>
+                                <div class="slider-img" style="background-image: url('images/thailand2.jpg');"></div>
+                                <div class="slider-img" style="background-image: url('images/thailand3.jpg');"></div>
+                                <div class="ptc-price-badge">Rs. 66,000/-</div>
                             </div>
-
-                            <div class="tour-features">
-                                <div class="tour-feature"><i class="fa-regular fa-clock"></i> 6 Days / 5 Nights</div>
-                                <div class="tour-feature"><i class="fa-solid fa-plane"></i> Flights Included</div>
-                                <div class="tour-feature"><i class="fa-solid fa-bed"></i> 5-Star Resort</div>
-                            </div>
-
-                            <p class="tour-description">Escape to paradise with our all-inclusive Maldives package. Stay
-                                in a luxurious overwater villa, enjoy world-class dining, and experience breathtaking
-                                snorkeling in crystal-clear waters. This package includes return airport speedboat
-                                transfers and daily excursions.</p>
-
-                            <div class="tour-actions">
-                                <a href="contact.html?package=maldives" class="btn btn-primary">Book This Tour</a>
-                                <a href="contact.html" class="btn btn-outline">Enquire Now</a>
+                            <div class="ptc-content">
+                                <h3 class="ptc-title">Thailand (Phuket)</h3>
+                                <div class="ptc-duration">
+                                    <i class="fa-solid fa-clock"></i> 4 Nights / 5 Days (2 Persons)
+                                </div>
+                                <ul class="ptc-details">
+                                    <li><i class="fa-solid fa-hotel"></i> <span><strong>Inclusions:</strong> Mirage Express Hotel with Breakfast, Airport Pick-up & Drop-off</span></li>
+                                    <li><i class="fa-solid fa-map-location-dot"></i> <span><strong>Tours:</strong> One day Phi Phi Island tour (with lunch), James Bond Island (with lunch), and Half-day Phuket City Tour</span></li>
+                                </ul>
+                                <div class="ptc-actions">
+                                    <button class="ptc-btn-primary">Requirements</button>
+                                    <a href="contact.html?package=thailand-phuket" class="ptc-btn-outline">Apply Now</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Tour Item 2 -->
-                    <div class="tour-list-item animate-on-scroll">
-                        <div class="tour-list-img"
-                            style="background-image: url('https://images.unsplash.com/photo-1498623116890-37e912163d5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&fm=webp');" aria-label="Ancient Rome ruins Italy">
-                            <div class="tour-list-badge">Cultural Explorer</div>
-                        </div>
-                        <div class="tour-list-content">
-                            <div class="tour-list-header">
-                                <div>
-                                    <h2>Grand Tour of Italy</h2>
-                                    <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Rome, Florence,
-                                        Venice</div>
-                                </div>
-                                <div class="tour-price-box">
-                                    <span>Starting from</span>
-                                    <div class="price">$2,150</div>
-                                </div>
+                        <!-- Package 3: Turkey -->
+                        <div class="premium-tour-card animate-on-scroll">
+                            <div class="package-slider">
+                                <div class="slider-img active" style="background-image: url('images/turkey1.jpg');"></div>
+                                <div class="slider-img" style="background-image: url('images/turkey2.jpg');"></div>
+                                <div class="slider-img" style="background-image: url('images/turkey3.jpg');"></div>
+                                <div class="ptc-price-badge">Rs. 14,80,000/-</div>
                             </div>
-
-                            <div class="tour-features">
-                                <div class="tour-feature"><i class="fa-regular fa-clock"></i> 10 Days / 9 Nights</div>
-                                <div class="tour-feature"><i class="fa-solid fa-train"></i> Train Transfers</div>
-                                <div class="tour-feature"><i class="fa-solid fa-camera"></i> Guided Tours</div>
-                            </div>
-
-                            <p class="tour-description">Immerse yourself in the rich history and culinary delights of
-                                Italy. From the ancient ruins of Rome to the Renaissance art of Florence and the
-                                romantic canals of Venice, this comprehensive tour covers all the must-see highlights
-                                with expert local guides.</p>
-
-                            <div class="tour-actions">
-                                <a href="contact.html?package=italy" class="btn btn-primary">Book This Tour</a>
-                                <a href="contact.html" class="btn btn-outline">Enquire Now</a>
+                            <div class="ptc-content">
+                                <h3 class="ptc-title">Turkey (11 Days Itinerary)</h3>
+                                <div class="ptc-duration">
+                                    <i class="fa-solid fa-clock"></i> 11 Days
+                                </div>
+                                <ul class="ptc-details">
+                                    <li><i class="fa-solid fa-hotel"></i> <span><strong>Accommodation:</strong> 05 Nights Istanbul, 05 Nights Antalya (Elite World & The Marmara stays)</span></li>
+                                    <li><i class="fa-solid fa-map-location-dot"></i> <span><strong>Highlights:</strong> Bosphorus Cruise, Land of Legends, and Flights included. (Group total package)</span></li>
+                                </ul>
+                                <div class="ptc-actions">
+                                    <button class="ptc-btn-primary">Requirements</button>
+                                    <a href="contact.html?package=turkey" class="ptc-btn-outline">Apply Now</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Tour Item 3 -->
-                    <div class="tour-list-item animate-on-scroll">
-                        <div class="tour-list-img"
-                            style="background-image: url('https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&fm=webp');" aria-label="Lush green temple landscape in Thailand">
-                            <div class="tour-list-badge">Best Seller</div>
-                        </div>
-                        <div class="tour-list-content">
-                            <div class="tour-list-header">
-                                <div>
-                                    <h2>Exotic Thailand Adventure</h2>
-                                    <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Bangkok, Phuket,
-                                        Chiang Mai</div>
-                                </div>
-                                <div class="tour-price-box">
-                                    <span>Starting from</span>
-                                    <div class="price">$1,100</div>
-                                </div>
+                        <!-- Package 4: Multi-Country -->
+                        <div class="premium-tour-card animate-on-scroll">
+                            <div class="package-slider">
+                                <div class="slider-img active" style="background-image: url('images/Destination1.jpg');"></div>
+                                <div class="slider-img" style="background-image: url('images/Destination2.jpg');"></div>
+                                <div class="slider-img" style="background-image: url('images/Destination3.jpg');"></div>
+                                <div class="ptc-price-badge">Rs. 765,000/-</div>
                             </div>
-
-                            <div class="tour-features">
-                                <div class="tour-feature"><i class="fa-regular fa-clock"></i> 8 Days / 7 Nights</div>
-                                <div class="tour-feature"><i class="fa-solid fa-utensils"></i> All Meals</div>
-                                <div class="tour-feature"><i class="fa-solid fa-bus"></i> Local Transport</div>
-                            </div>
-
-                            <p class="tour-description">Discover the vibrant streets of Bangkok, relax on the pristine
-                                beaches of Phuket, and explore the lush mountains of Chiang Mai. This thrilling
-                                adventure perfectly balances cultural discovery, adventure activities, and relaxing
-                                downtime.</p>
-
-                            <div class="tour-actions">
-                                <a href="contact.html?package=thailand" class="btn btn-primary">Book This Tour</a>
-                                <a href="contact.html" class="btn btn-outline">Enquire Now</a>
+                            <div class="ptc-content">
+                                <h3 class="ptc-title">Multi-Country Asia Mega Tour</h3>
+                                <div class="ptc-duration">
+                                    <i class="fa-solid fa-clock"></i> 12 Nights / 13 Days
+                                </div>
+                                <ul class="ptc-details">
+                                    <li><i class="fa-solid fa-plane-departure"></i> <span><strong>Destinations:</strong> Sri Lanka, Maldives, Malaysia, and Indonesia</span></li>
+                                    <li><i class="fa-solid fa-check-circle"></i> <span><strong>Key Inclusions:</strong> International Airline & Visas included</span></li>
+                                </ul>
+                                <div class="ptc-actions">
+                                    <button class="ptc-btn-primary">Requirements</button>
+                                    <a href="contact.html?package=asia-mega-tour" class="ptc-btn-outline">Apply Now</a>
+                                </div>
                             </div>
                         </div>
                     </div>

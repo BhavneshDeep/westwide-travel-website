@@ -416,4 +416,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }, Math.floor(Math.random() * 30000) + 30000);
         }, 5000);
     }
+
+    // --- 14. Auto-Slider for Premium Packages ---
+    function startSlider(slider) {
+        const slides = slider.querySelectorAll('.slider-img');
+        const total = slides.length;
+        if (total < 2) return;
+        let current = 0;
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % total; // Cycles 0 -> 1 -> 2 -> 0 without skipping
+            slides[current].classList.add('active');
+        }, 2000); // 2 seconds interval
+    }
+
+    document.querySelectorAll('.package-slider').forEach(startSlider);
 });
