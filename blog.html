@@ -4,233 +4,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Blog | Westwide Travel and Tours</title>
+    <title>Travel Guide | Westwide Travel and Tours</title>
     <meta name="description"
-        content="Read our latest travel tips, visa guides, and customer stories. Discover the world with Westwide Travel and Tours.">
+        content="Search our interactive travel guides for Dubai, Turkey, Thailand, and Malaysia. Get visa updates, itineraries, weather info and book on WhatsApp.">
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/about.css"> <!-- for page-header -->
+    <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/blog.css">
-
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- Navigation Bar -->
+    <!-- ===================== NAVBAR ===================== -->
     <header class="navbar"
-        style="background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;">
+        style="background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1);position:sticky;top:0;z-index:1000;">
         <div class="container"
-            style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+            style="display:flex;justify-content:space-between;align-items:center;padding:10px 20px;">
             <a href="index.html" class="nav-brand"
-                style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
-                <img src="images/Logo.jpeg" alt="Westwide Logo" style="height: 50px; width: auto;">
-                <div style="display: flex; flex-direction: column;">
-                    <span style="font-size: 1.2rem; font-weight: 800; color: #003399; line-height: 1;">WEST WIDE</span>
-                    <span style="font-size: 0.7rem; font-weight: 600; color: #E69138; letter-spacing: 1px;">TRAVEL &
-                        TOURS</span>
+                style="display:flex;align-items:center;gap:15px;text-decoration:none;">
+                <img src="images/Logo.jpeg" alt="Westwide Logo" style="height:50px;width:auto;">
+                <div style="display:flex;flex-direction:column;">
+                    <span style="font-size:1.2rem;font-weight:800;color:#003399;line-height:1;">WEST WIDE</span>
+                    <span style="font-size:0.7rem;font-weight:600;color:#E69138;letter-spacing:1px;">TRAVEL &amp; TOURS</span>
                 </div>
             </a>
-
             <div class="menu-toggle" id="mobile-menu"
-                style="display: none; cursor: pointer; font-size: 1.5rem; color: #003399;">
+                style="display:none;cursor:pointer;font-size:1.5rem;color:#003399;">
                 <i class="fa-solid fa-bars"></i>
             </div>
-
             <nav class="nav-links" id="nav-list">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About Us</a>
                 <a href="services.html" class="nav-link">Services</a>
-                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="blog.html" class="nav-link blog-nav-active">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
-                <a href="contact.html" class="btn-mobile-only" style="display: none;">Book Now</a>
+                <a href="contact.html" class="btn-mobile-only" style="display:none;">Book Now</a>
             </nav>
-
-            <div class="nav-actions" style="display: flex; align-items: center; gap: 0;">
-                <div class="currency-converter" style="display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 600; color: #003399; margin-right: 15px;">
-                    <select id="currency-select" style="border: none; background: transparent; font-weight: bold; color: #003399; cursor: pointer; outline: none;">
+            <div class="nav-actions" style="display:flex;align-items:center;gap:0;">
+                <div class="currency-converter"
+                    style="display:flex;align-items:center;gap:5px;font-size:0.9rem;font-weight:600;color:#003399;margin-right:15px;">
+                    <select id="currency-select"
+                        style="border:none;background:transparent;font-weight:bold;color:#003399;cursor:pointer;outline:none;">
                         <option value="USD">USD</option>
                         <option value="AED">AED</option>
                         <option value="SAR">SAR</option>
                     </select>
-                    <span id="currency-result" style="color: #E69138;">... PKR</span>
+                    <span id="currency-result" style="color:#E69138;">... PKR</span>
                 </div>
                 <a href="contact.html" class="btn btn-primary"
-                    style="background-color: #003399; border: none; padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px;">Book
+                    style="background-color:#003399;border:none;padding:10px 20px;color:white;text-decoration:none;border-radius:5px;">Book
                     Now</a>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Page Header -->
+
+        <!-- ===================== PAGE HERO ===================== -->
         <header class="page-header"
-            style="background-image: url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+            style="background-image:url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
             <div class="page-header-overlay"></div>
             <div class="container page-header-content animate-on-scroll">
-                <h1>Travel Insights & Stories</h1>
-                <p>Tips, Guides, and Customer Experiences</p>
+                <h1>Travel Guide &amp; Insights</h1>
+                <p>Search your dream destination — Get visas, itineraries &amp; tips instantly</p>
             </div>
         </header>
 
-        <!-- Main Blog Content -->
-        <section class="section">
-            <div class="container blog-container">
-
-                <!-- Featured Post -->
-                <div class="featured-post animate-on-scroll">
-                    <div class="featured-img"
-                        style="background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');">
-                    </div>
-                    <div class="featured-content">
-                        <div class="post-category">Destination Guides</div>
-                        <h2>The Ultimate Guide to Exploring Paris in 3 Days</h2>
-                        <div class="post-meta">
-                            <span><i class="fa-regular fa-calendar"></i> October 15, 2025</span>
-                            <span><i class="fa-regular fa-user"></i> By Emma Watson</span>
-                        </div>
-                        <p>Paris is a city that captures the heart of every traveler. Whether you're a lover of art,
-                            food, history, or fashion, the French capital has something extraordinary to offer. Here is
-                            our expertly crafted three-day itinerary to make the most out of your Parisian adventure...
-                        </p>
-                        <a href="#" class="btn btn-primary" style="align-self: flex-start;">Read Full Article</a>
-                    </div>
+        <!-- ===================== SECTION 1: CUSTOMER TESTIMONIALS ===================== -->
+        <section class="blog-testimonials-section">
+            <div class="container">
+                <div class="blog-section-label animate-on-scroll">
+                    <span class="label-badge"><i class="fa-solid fa-star"></i> Real Traveler Reviews</span>
                 </div>
-
-                <!-- Latest Articles Grid -->
-                <div class="section-header text-center animate-on-scroll">
-                    <h2 class="section-title">Latest Articles</h2>
+                <div class="blog-section-heading animate-on-scroll">
+                    <h2>What Our Travelers Say</h2>
+                    <p>Genuine stories from people who explored the world with Westwide</p>
                 </div>
-
-                <div class="blog-grid">
-                    <!-- Post 1 (Visa Guide) -->
-                    <div class="blog-card animate-on-scroll">
-                        <div class="blog-card-img"
-                            style="background-image: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                            <span class="blog-card-category">Visa Process</span>
-                        </div>
-                        <div class="blog-card-body">
-                            <div class="post-meta">
-                                <span><i class="fa-regular fa-calendar"></i> Oct 12, 2025</span>
+                <div class="testimonials-grid animate-on-scroll">
+                    <!-- Card 1 -->
+                    <div class="review-card">
+                        <div class="review-card-top">
+                            <img src="https://ui-avatars.com/api/?name=Ahmed+Khan&background=003399&color=fff&size=128"
+                                alt="Mr. Ahmed Khan" class="reviewer-avatar" loading="lazy">
+                            <div class="reviewer-details">
+                                <h4>Mr. Ahmed's Turkey Trip</h4>
+                                <span class="reviewer-location"><i class="fa-solid fa-location-dot"></i> Karachi, Pakistan</span>
                             </div>
-                            <h3>How to Prepare for Your US B1/B2 Visa Interview</h3>
-                            <p>Securing a US Tourist Visa can seem daunting. We break down the most common interview
-                                questions and provide essential tips to increase your chances of visa approval.</p>
-                            <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
+                        <div class="star-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="review-text">"Amazing service by Westwide, everything was on time! Our Istanbul tour was flawlessly organised — from airport pickup to the Cappadocia balloon ride. Will definitely book again!"</p>
+                        <div class="review-trip-tag"><i class="fa-solid fa-plane-departure"></i> Turkey Package</div>
                     </div>
-
-                    <!-- Post 2 (Travel Tips) -->
-                    <div class="blog-card animate-on-scroll" style="animation-delay: 0.1s;">
-                        <div class="blog-card-img"
-                            style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                            <span class="blog-card-category" style="background: var(--color-accent);">Travel Tips</span>
-                        </div>
-                        <div class="blog-card-body">
-                            <div class="post-meta">
-                                <span><i class="fa-regular fa-calendar"></i> Oct 05, 2025</span>
+                    <!-- Card 2 -->
+                    <div class="review-card review-card--featured">
+                        <div class="review-card-top">
+                            <img src="https://ui-avatars.com/api/?name=Sara+Malik&background=E69138&color=fff&size=128"
+                                alt="Sara Malik" class="reviewer-avatar" loading="lazy">
+                            <div class="reviewer-details">
+                                <h4>Sara's Dubai Escape</h4>
+                                <span class="reviewer-location"><i class="fa-solid fa-location-dot"></i> Lahore, Pakistan</span>
                             </div>
-                            <h3>10 Essential Packing Tips for International Travel</h3>
-                            <p>Don't let overflowing luggage ruin your trip. Master the art of packing light with our
-                                expert tips on maximizing space and keeping your essentials organized.</p>
-                            <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
+                        <div class="star-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="review-text">"We got our Dubai visa in just 3 days and the tour was incredible! Westwide handled every detail — Burj Khalifa, desert safari, and the Dubai Frame. Highly recommended!"</p>
+                        <div class="review-trip-tag"><i class="fa-solid fa-plane-departure"></i> Dubai Package</div>
                     </div>
-
-                    <!-- Post 3 (Customer Experience) -->
-                    <div class="blog-card animate-on-scroll" style="animation-delay: 0.2s;">
-                        <div class="blog-card-img"
-                            style="background-image: url('https://images.unsplash.com/photo-1542315132-236f568a96e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                            <span class="blog-card-category" style="background: #25D366;">Travel Stories</span>
-                        </div>
-                        <div class="blog-card-body">
-                            <div class="post-meta">
-                                <span><i class="fa-regular fa-calendar"></i> Sep 28, 2025</span>
+                    <!-- Card 3 -->
+                    <div class="review-card">
+                        <div class="review-card-top">
+                            <img src="https://ui-avatars.com/api/?name=Usman+Raza&background=003399&color=fff&size=128"
+                                alt="Usman Raza" class="reviewer-avatar" loading="lazy">
+                            <div class="reviewer-details">
+                                <h4>Usman's Thailand Adventure</h4>
+                                <span class="reviewer-location"><i class="fa-solid fa-location-dot"></i> Islamabad, Pakistan</span>
                             </div>
-                            <h3>"Our Dream Honeymoon in the Maldives" - The Smiths</h3>
-                            <p>Read the wonderful experiences of John and Sarah Smith as they embarked on their
-                                unforgettable romantic getaway to the pristine beaches of the Maldives curated by our
-                                team.</p>
-                            <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
+                        <div class="star-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <p class="review-text">"Island hopping with Westwide was the trip of a lifetime. The Phi Phi islands, the street food tours in Bangkok, and the visa-on-arrival guidance made every part stress-free."</p>
+                        <div class="review-trip-tag"><i class="fa-solid fa-plane-departure"></i> Thailand Package</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Integrated Client Testimonials -->
-        <section class="testimonials-section">
-            <div class="container animate-on-scroll">
-                <i class="fa-solid fa-quote-left"
-                    style="font-size: 3rem; color: rgba(255,255,255,0.2); margin-bottom: 1rem;"></i>
-                <div class="testimonial-container">
-                    <p class="testimonial-quote">"The level of professionalism and attention to detail from Westwide
-                        Travel is matched. They procured my Schengen visa flawlessly and tailored a European tour that
-                        exceeded every expectation I had."</p>
-                    <div class="testimonial-author">
-                        <img src="https://ui-avatars.com/api/?name=David+Chen&background=ff8c42&color=fff"
-                            alt="David Chen">
-                        <div class="author-info" style="text-align: left;">
-                            <h4>David Chen</h4>
-                            <span>Business Traveler, Canada</span>
-                        </div>
-                    </div>
-                </div>
+        <!-- ===================== SECTION 2: DYNAMIC TRAVEL GUIDE ===================== -->
+        <section class="blog-post-section">
+            <div class="container">
+                <div class="blog-post-layout">
 
-                <!-- dots for "slider" -->
-                <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 0.5rem;">
-                    <span
-                        style="width: 12px; height: 12px; background: var(--color-accent); border-radius: 50%; display: inline-block;"></span>
-                    <span
-                        style="width: 12px; height: 12px; background: rgba(255,255,255,0.3); border-radius: 50%; display: inline-block; cursor:pointer;"></span>
-                    <span
-                        style="width: 12px; height: 12px; background: rgba(255,255,255,0.3); border-radius: 50%; display: inline-block; cursor:pointer;"></span>
-                </div>
+                    <!-- ======= MAIN AREA ======= -->
+                    <div class="blog-main-area">
+
+                        <!-- ── PREMIUM SEARCH BAR ── -->
+                        <div class="guide-search-wrapper animate-on-scroll">
+                            <div class="guide-search-label">
+                                <i class="fa-solid fa-compass"></i>
+                                <span>Destination Travel Guide</span>
+                            </div>
+                            <h2 class="guide-search-title">Where Do You Want to Go?</h2>
+                            <p class="guide-search-sub">Search a destination to get visa info, a day-by-day itinerary, weather guide &amp; booking options.</p>
+                            <div class="guide-search-bar">
+                                <div class="gsb-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                                <input
+                                    type="text"
+                                    id="guideSearchInput"
+                                    placeholder="Search Destination (e.g., Dubai, Turkey, Thailand)"
+                                    autocomplete="off"
+                                    aria-label="Search Destination"
+                                />
+                                <button id="guideSearchBtn" class="gsb-btn">
+                                    <i class="fa-solid fa-arrow-right"></i> Search
+                                </button>
+                            </div>
+                            <!-- Quick-pick chips -->
+                            <div class="guide-chips">
+                                <span class="chip" onclick="showCountryGuide('Dubai')"><i class="fa-solid fa-city"></i> Dubai</span>
+                                <span class="chip" onclick="showCountryGuide('Turkey')"><i class="fa-solid fa-mosque"></i> Turkey</span>
+                                <span class="chip" onclick="showCountryGuide('Thailand')"><i class="fa-solid fa-umbrella-beach"></i> Thailand</span>
+                                <span class="chip" onclick="showCountryGuide('Malaysia')"><i class="fa-solid fa-tower-observation"></i> Malaysia</span>
+                            </div>
+                        </div>
+
+                        <!-- ── DYNAMIC RESULT AREA (hidden by default) ── -->
+                        <div id="guide-result" class="guide-result" aria-live="polite">
+                            <!-- Injected by JS -->
+                        </div>
+
+                    </div><!-- /.blog-main-area -->
+
+                    <!-- ======= SIDEBAR ======= -->
+                    <aside class="blog-sidebar">
+
+                        <!-- Search Widget -->
+                        <div class="sidebar-widget animate-on-scroll">
+                            <h4 class="widget-title"><i class="fa-solid fa-magnifying-glass"></i> Quick Search</h4>
+                            <div class="sidebar-search">
+                                <input type="text" placeholder="Search destination..." id="blog-search-input">
+                                <button id="blog-search-btn" aria-label="Search"><i class="fa-solid fa-search"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Recent Posts / Guide Links -->
+                        <div class="sidebar-widget animate-on-scroll">
+                            <h4 class="widget-title"><i class="fa-solid fa-clock-rotate-left"></i> Destination Guides</h4>
+                            <ul class="recent-posts-list">
+                                <li class="recent-post-item">
+                                    <div class="recent-post-img"
+                                        style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80');">
+                                    </div>
+                                    <div class="recent-post-info">
+                                        <a href="#guide-result" onclick="showCountryGuide('Dubai'); return false;">Dubai Guide</a>
+                                        <span><i class="fa-solid fa-map"></i> 5-Day Itinerary</span>
+                                    </div>
+                                </li>
+                                <li class="recent-post-item">
+                                    <div class="recent-post-img"
+                                        style="background-image:url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80');">
+                                    </div>
+                                    <div class="recent-post-info">
+                                        <a href="#guide-result" onclick="showCountryGuide('Turkey'); return false;">Turkey Guide</a>
+                                        <span><i class="fa-solid fa-map"></i> 5-Day Itinerary</span>
+                                    </div>
+                                </li>
+                                <li class="recent-post-item">
+                                    <div class="recent-post-img"
+                                        style="background-image:url('https://images.unsplash.com/photo-1504214208698-ea1916a2195a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80');">
+                                    </div>
+                                    <div class="recent-post-info">
+                                        <a href="#guide-result" onclick="showCountryGuide('Thailand'); return false;">Thailand Guide</a>
+                                        <span><i class="fa-solid fa-map"></i> 5-Day Itinerary</span>
+                                    </div>
+                                </li>
+                                <li class="recent-post-item">
+                                    <div class="recent-post-img"
+                                        style="background-image:url('https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80');">
+                                    </div>
+                                    <div class="recent-post-info">
+                                        <a href="#guide-result" onclick="showCountryGuide('Malaysia'); return false;">Malaysia Guide</a>
+                                        <span><i class="fa-solid fa-map"></i> 5-Day Itinerary</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Categories -->
+                        <div class="sidebar-widget animate-on-scroll">
+                            <h4 class="widget-title"><i class="fa-solid fa-tags"></i> Categories</h4>
+                            <ul class="category-list">
+                                <li><a href="#"><span>Travel Guide</span><span class="cat-count">4</span></a></li>
+                                <li><a href="#"><span>Travel Tips</span><span class="cat-count">3</span></a></li>
+                                <li><a href="#"><span>Visa News</span><span class="cat-count">2</span></a></li>
+                                <li><a href="#"><span>Destination Guide</span><span class="cat-count">5</span></a></li>
+                                <li><a href="#"><span>Travel Stories</span><span class="cat-count">2</span></a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Sidebar CTA -->
+                        <div class="sidebar-widget sidebar-cta animate-on-scroll">
+                            <i class="fa-solid fa-passport"></i>
+                            <h4>Need a Visa?</h4>
+                            <p>Get a free expert consultation from our visa specialists today.</p>
+                            <a href="contact.html" class="btn-cta">Get Free Quote</a>
+                        </div>
+
+                    </aside><!-- /.blog-sidebar -->
+
+                </div><!-- /.blog-post-layout -->
             </div>
         </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="footer" style="background-color: #001a4d; color: white; padding: 50px 0 20px;">
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer" style="background-color:#001a4d;color:white;padding:50px 0 20px;">
         <div class="container">
             <div class="footer-grid"
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
-
+                style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;">
                 <div class="footer-col">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                        <div style="background: white; padding: 5px; border-radius: 5px;">
-                            <img src="images/Logo.jpeg" alt="Westwide Logo" style="height: 50px; display: block;">
+                    <div style="display:flex;align-items:center;gap:15px;margin-bottom:20px;">
+                        <div style="background:white;padding:5px;border-radius:5px;">
+                            <img src="images/Logo.jpeg" alt="Westwide Logo" style="height:50px;display:block;">
                         </div>
-                        <div style="display: flex; flex-direction: column; justify-content: center;">
-                            <span style="font-size: 1.4rem; font-weight: 800; color: #ffffff; line-height: 1;">WEST
-                                WIDE</span>
-                            <span
-                                style="font-size: 0.8rem; font-weight: 600; color: #E69138; letter-spacing: 1px;">TRAVEL
-                                & TOURS</span>
+                        <div style="display:flex;flex-direction:column;justify-content:center;">
+                            <span style="font-size:1.4rem;font-weight:800;color:#ffffff;line-height:1;">WEST WIDE</span>
+                            <span style="font-size:0.8rem;font-weight:600;color:#E69138;letter-spacing:1px;">TRAVEL &amp; TOURS</span>
                         </div>
                     </div>
-                    <p style="color: #ccc; line-height: 1.6;">Your premier choice for unforgettable international tours
-                        and reliable visa services in Karachi.</p>
+                    <p style="color:#ccc;line-height:1.6;">Your premier choice for unforgettable international tours and reliable visa services in Karachi.</p>
                 </div>
-
                 <div class="footer-col">
-                    <h3 style="color: #E69138; margin-bottom: 20px;">Contact Details</h3>
-                    <p style="margin-bottom: 10px;"><i class="fa-solid fa-location-dot"
-                            style="color: #E69138; margin-right: 10px;"></i> S-64, 2nd Floor, Glass Tower Building, Teen
-                        Talwar, Clifton, Karachi</p>
-                    <p style="margin-bottom: 10px;"><i class="fa-solid fa-phone"
-                            style="color: #E69138; margin-right: 10px;"></i> +92 305 3033023</p>
-                    <p><i class="fa-solid fa-envelope" style="color: #E69138; margin-right: 10px;"></i>
-                        info@westwidetravels.com</p>
+                    <h3 style="color:#E69138;margin-bottom:20px;">Contact Details</h3>
+                    <p style="margin-bottom:10px;"><i class="fa-solid fa-location-dot" style="color:#E69138;margin-right:10px;"></i> S-64, 2nd Floor, Glass Tower Building, Teen Talwar, Clifton, Karachi</p>
+                    <p style="margin-bottom:10px;"><i class="fa-solid fa-phone" style="color:#E69138;margin-right:10px;"></i> +92 305 3033023</p>
+                    <p><i class="fa-solid fa-envelope" style="color:#E69138;margin-right:10px;"></i> info@westwidetravels.com</p>
                 </div>
             </div>
-
             <div class="footer-bottom"
-                style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                style="text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);">
                 <p>&copy; 2026 Westwide Travel and Tours. All Rights Reserved.</p>
-                <p style="font-size: 0.9rem; color: #aaa; margin-top: 5px;">Developed by <strong
-                        style="color: white;">Bhavnesh Karmani</strong></p>
+                <p style="font-size:0.9rem;color:#aaa;margin-top:5px;">Developed by <strong style="color:white;">Bhavnesh Karmani</strong></p>
             </div>
         </div>
     </footer>
@@ -247,17 +313,17 @@
         <div class="lead-popup-box">
             <button class="lead-popup-close" id="closeLeadPopup"><i class="fa-solid fa-xmark"></i></button>
             <div class="lead-popup-content">
-                <i class="fa-solid fa-passport" style="font-size: 3rem; color: #E69138; margin-bottom: 15px;"></i>
-                <h3 style="color: #003399; margin-bottom: 10px;">Looking for a Tourist Visa?</h3>
-                <p style="margin-bottom: 20px; color: #555;">Get a free consultation and personalized quote from our travel experts today.</p>
-                <form id="leadPopupForm" style="display: flex; flex-direction: column; gap: 10px;">
-                    <input type="text" placeholder="Your Name" required style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                    <input type="tel" placeholder="Phone / WhatsApp" required style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                    <button type="submit" class="btn btn-primary" style="background-color: #003399; padding: 10px; border: none;">Get a Free Quote</button>
+                <i class="fa-solid fa-passport" style="font-size:3rem;color:#E69138;margin-bottom:15px;"></i>
+                <h3 style="color:#003399;margin-bottom:10px;">Looking for a Tourist Visa?</h3>
+                <p style="margin-bottom:20px;color:#555;">Get a free consultation and personalized quote from our travel experts today.</p>
+                <form id="leadPopupForm" style="display:flex;flex-direction:column;gap:10px;">
+                    <input type="text" placeholder="Your Name" required style="padding:10px;border:1px solid #ddd;border-radius:5px;">
+                    <input type="tel" placeholder="Phone / WhatsApp" required style="padding:10px;border:1px solid #ddd;border-radius:5px;">
+                    <button type="submit" class="btn btn-primary" style="background-color:#003399;padding:10px;border:none;">Get a Free Quote</button>
                 </form>
             </div>
         </div>
     </div>
-</body>
 
+</body>
 </html>

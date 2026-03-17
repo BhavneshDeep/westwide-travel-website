@@ -1,208 +1,1268 @@
-/* Blog Page Specific Styles */
-.blog-container {
-    padding-top: 3rem;
+/* =========================================================
+   Blog Page — Full Stylesheet
+   Westwide Travel & Tours
+   Blue: #003399  |  Orange: #E69138
+   Font: Inter (Google Fonts)
+   ========================================================= */
+
+:root {
+    --blue: #003399;
+    --blue-dark: #001a66;
+    --orange: #E69138;
+    --orange-dark: #c97a25;
+    --text: #2d2d2d;
+    --text-muted: #666;
+    --bg-light: #f7f9fc;
+    --white: #ffffff;
+    --radius: 14px;
+    --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.07);
+    --shadow-md: 0 8px 28px rgba(0, 51, 153, 0.12);
+    --shadow-lg: 0 16px 48px rgba(0, 51, 153, 0.18);
+    --transition: 0.3s ease;
 }
 
-/* Featured Post */
-.featured-post {
-    display: flex;
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-    margin-bottom: 4rem;
+body { font-family: 'Inter', sans-serif; }
+
+/* Active nav highlight */
+.blog-nav-active {
+    color: #003399 !important;
+    font-weight: 700 !important;
+    border-bottom: 2px solid #E69138;
+    padding-bottom: 2px;
 }
 
-.featured-img {
-    flex: 1;
-    min-height: 400px;
-    background-size: cover;
-    background-position: center;
+/* =========================================================
+   SECTION LABELS & HEADINGS (shared)
+   ========================================================= */
+.blog-section-label {
+    text-align: center;
+    margin-bottom: 0.75rem;
 }
 
-.featured-content {
-    flex: 1;
-    padding: 4rem;
+.label-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(230, 145, 56, 0.12);
+    color: var(--orange);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(230, 145, 56, 0.3);
+}
+
+.blog-section-heading {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.blog-section-heading h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--blue);
+    margin-bottom: 0.5rem;
+}
+
+.blog-section-heading p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+/* =========================================================
+   SECTION 1 — CUSTOMER TESTIMONIALS
+   ========================================================= */
+.blog-testimonials-section {
+    background: var(--bg-light);
+    padding: 5rem 0 4rem;
+}
+
+/* 3-column grid */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+}
+
+/* Review Card */
+.review-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: transform var(--transition), box-shadow var(--transition);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 1rem;
 }
 
-.post-category {
-    text-transform: uppercase;
-    font-size: 0.85rem;
+.review-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Featured card (center) gets a subtle blue tint */
+.review-card--featured {
+    background: linear-gradient(160deg, #f0f4ff 0%, #ffffff 60%);
+    border-color: rgba(0, 51, 153, 0.15);
+}
+
+/* Card Top: avatar + name */
+.review-card-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.reviewer-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--orange);
+    flex-shrink: 0;
+}
+
+.reviewer-details h4 {
+    font-size: 1rem;
     font-weight: 700;
-    color: var(--color-accent);
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
+    color: var(--blue);
+    margin: 0 0 3px;
 }
 
-.featured-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--color-primary);
-}
-
-.post-meta {
+.reviewer-location {
+    font-size: 0.78rem;
+    color: var(--text-muted);
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    color: var(--color-text-muted);
+    gap: 4px;
+}
+
+.reviewer-location i { color: var(--orange); }
+
+/* Stars */
+.star-rating {
+    display: flex;
+    gap: 4px;
+}
+
+.star-rating i {
+    color: var(--orange);
     font-size: 0.9rem;
-    margin-bottom: 1.5rem;
 }
 
-.post-meta span {
+/* Review Text */
+.review-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin: 0;
+    font-style: italic;
+}
+
+/* Trip tag */
+.review-trip-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.77rem;
+    font-weight: 600;
+    color: var(--blue);
+    background: rgba(0, 51, 153, 0.07);
+    padding: 4px 12px;
+    border-radius: 20px;
+    width: fit-content;
+    margin-top: auto;
+}
+
+/* =========================================================
+   SECTION 2 — BLOG POST LAYOUT
+   ========================================================= */
+.blog-post-section {
+    padding: 5rem 0;
+    background: var(--white);
+}
+
+/* Two-column: article + sidebar */
+.blog-post-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+/* ---- Article ---- */
+.blog-post-article {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* Post Header */
+.post-header-area {
+    padding: 2.5rem 2.5rem 0;
+}
+
+.post-category-tag {
+    display: inline-block;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+.post-main-title {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1.35;
+    margin-bottom: 1.2rem;
+}
+
+.post-author-strip {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 12px;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
 }
 
-.featured-content p {
-    color: var(--color-text-muted);
-    line-height: 1.8;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
+.post-author-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
 }
 
-/* Post Grid */
-.blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2.5rem;
-    margin-bottom: 4rem;
+.post-author-strip div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
-.blog-card {
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(0,0,0,0.05);
+.post-author-strip strong {
+    font-size: 0.88rem;
+    color: var(--text);
 }
 
-.blog-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+.post-author-strip span {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.blog-card-img {
-    height: 220px;
+/* Post Hero Image */
+.post-hero-img {
+    height: 360px;
     background-size: cover;
     background-position: center;
-    position: relative;
+    margin: 1.5rem 2.5rem;
+    border-radius: 10px;
 }
 
-.blog-card-category {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: var(--color-primary);
-    color: var(--color-white);
-    padding: 0.3rem 0.8rem;
-    border-radius: var(--radius-md);
-    font-size: 0.8rem;
-    font-weight: 600;
+/* Post Body */
+.post-body {
+    padding: 0 2.5rem 2.5rem;
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 0.95rem;
 }
 
-.blog-card-body {
-    padding: 2rem;
+.post-body p { margin-bottom: 1.2rem; }
+
+.post-subheading {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--blue);
+    margin: 2.5rem 0 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.blog-card-body h3 {
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-    line-height: 1.4;
+/* =========================================================
+   FEATURE 1 — VISA UPDATE ALERT BOX
+   ========================================================= */
+.visa-alert-box {
+    margin: 0 2.5rem 2rem;
+    background: linear-gradient(135deg, #e8f0ff 0%, #eef5ff 100%);
+    border: 1.5px solid rgba(0, 51, 153, 0.2);
+    border-left: 5px solid var(--blue);
+    border-radius: 10px;
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
 }
 
-.blog-card-body p {
-    color: var(--color-text-muted);
+.visa-alert-icon {
+    background: var(--blue);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+    animation: ring-bell 2.5s ease-in-out infinite;
+}
+
+@keyframes ring-bell {
+    0%, 100% { transform: rotate(0deg); }
+    10%       { transform: rotate(15deg); }
+    20%       { transform: rotate(-12deg); }
+    30%       { transform: rotate(10deg); }
+    40%       { transform: rotate(-8deg); }
+    50%       { transform: rotate(0deg); }
+}
+
+.visa-alert-content strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--blue);
+    margin-bottom: 0.5rem;
+}
+
+.visa-alert-content p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+}
+
+.visa-alert-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--blue);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--orange);
+    padding-bottom: 2px;
+    transition: color var(--transition);
+}
+
+.visa-alert-link:hover { color: var(--orange); }
+
+/* =========================================================
+   FEATURE 2 — DAY-WISE ITINERARY TIMELINE
+   ========================================================= */
+.itinerary-timeline {
+    margin-top: 0.5rem;
     margin-bottom: 1.5rem;
+}
+
+.itinerary-item {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 1rem;
+    margin-bottom: 0;
+}
+
+/* Node column */
+.itinerary-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.node-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--blue);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 51, 153, 0.3);
+    z-index: 1;
+}
+
+.node-icon--last {
+    background: var(--orange);
+    box-shadow: 0 2px 8px rgba(230, 145, 56, 0.35);
+}
+
+.node-line {
+    width: 2px;
+    flex: 1;
+    background: linear-gradient(to bottom, rgba(0,51,153,0.3), rgba(0,51,153,0.05));
+    min-height: 40px;
+    margin-top: 4px;
+}
+
+/* Content column */
+.itinerary-content {
+    padding-bottom: 2rem;
+}
+
+.itinerary-item--last .itinerary-content {
+    padding-bottom: 0.5rem;
+}
+
+.itinerary-day {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-bottom: 0.45rem;
+}
+
+.itinerary-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 0.4rem;
+}
+
+.itinerary-content p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 0.6rem;
+}
+
+.itinerary-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.itinerary-tags span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(0, 51, 153, 0.07);
+    color: var(--blue);
+    font-size: 0.76rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+/* =========================================================
+   FEATURE 3 — WEATHER & BEST TIME TABLE
+   ========================================================= */
+.weather-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+}
+
+.weather-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 420px;
+}
+
+.weather-table thead tr {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.weather-table thead th {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 0.3px;
+}
+
+.weather-table thead th i {
+    margin-right: 6px;
+    color: var(--orange);
+}
+
+.weather-table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background var(--transition);
+}
+
+.weather-table tbody tr:last-child { border-bottom: none; }
+.weather-table tbody tr:hover { background: rgba(0, 51, 153, 0.04); }
+
+.weather-table tbody td {
+    padding: 0.85rem 1.2rem;
+    color: var(--text);
+    vertical-align: middle;
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.status-peak {
+    background: rgba(0, 168, 89, 0.12);
+    color: #00863c;
+}
+
+.status-shoulder {
+    background: rgba(230, 145, 56, 0.15);
+    color: #b96e00;
+}
+
+.status-off {
+    background: rgba(180, 180, 180, 0.15);
+    color: #888;
+}
+
+.table-caption {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.5;
+}
+
+.table-caption i { color: var(--blue); margin-top: 2px; }
+
+/* =========================================================
+   FEATURE 4 — WHATSAPP BOOKING CTA
+   ========================================================= */
+.blog-whatsapp-cta {
+    margin: 0;
+    position: relative;
+    background: linear-gradient(135deg, var(--blue) 0%, #0050cc 100%);
+    padding: 2.8rem 2.5rem;
+    overflow: hidden;
+}
+
+.cta-glow {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(230,145,56,0.25) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.cta-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+
+
+
+.cta-eyebrow {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--orange);
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cta-text-area h3 {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+}
+
+.cta-subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 420px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* WhatsApp Button */
+.cta-whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #25D366;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 1rem 1.8rem;
+    border-radius: 50px;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+    transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+    animation: float-btn 3s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+.cta-whatsapp-btn i {
+    font-size: 1.4rem;
+}
+
+.cta-whatsapp-btn:hover {
+    background: #1da851;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(37, 211, 102, 0.55);
+    animation: none;
+}
+
+@keyframes float-btn {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-6px); }
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+.blog-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    position: sticky;
+    top: 90px;
+}
+
+.sidebar-widget {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.widget-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--blue);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.widget-title i { color: var(--orange); }
+
+/* Search */
+.sidebar-search {
+    display: flex;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color var(--transition);
+}
+
+.sidebar-search:focus-within { border-color: var(--blue); }
+
+.sidebar-search input {
+    flex: 1;
+    padding: 9px 12px;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    background: transparent;
+    color: var(--text);
+}
+
+.sidebar-search button {
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 0 14px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background var(--transition);
+}
+
+.sidebar-search button:hover { background: var(--orange); }
+
+/* Recent Posts */
+.recent-posts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.recent-post-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.recent-post-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+.recent-post-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.recent-post-info a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+    line-height: 1.35;
+    transition: color var(--transition);
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-.read-more {
-    color: var(--color-accent);
-    font-weight: 600;
+.recent-post-info a:hover { color: var(--orange); }
+
+.recent-post-info span {
+    font-size: 0.75rem;
+    color: #aaa;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    transition: color 0.3s ease;
+    gap: 4px;
 }
 
-.read-more:hover {
-    color: var(--color-accent-hover);
+/* Categories */
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.read-more i {
-    transition: transform 0.3s ease;
+.category-list li { border-bottom: 1px solid #f0f0f0; }
+.category-list li:last-child { border-bottom: none; }
+
+.category-list li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55rem 0;
+    font-size: 0.88rem;
+    color: #444;
+    text-decoration: none;
+    transition: color var(--transition);
 }
 
-.read-more:hover i {
-    transform: translateX(5px);
+.category-list li a:hover { color: var(--orange); }
+
+.cat-count {
+    background: #f0f4ff;
+    color: var(--blue);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
 }
 
-/* Interactive Testimonial Slider */
-.testimonials-section {
-    background: var(--color-primary);
-    color: var(--color-white);
-    padding: 5rem 0;
+/* Sidebar CTA */
+.sidebar-cta {
+    background: linear-gradient(135deg, var(--blue), #0050cc);
+    color: var(--white);
     text-align: center;
+    border: none;
 }
 
-.testimonial-container {
-    max-width: 800px;
-    margin: 0 auto;
+.sidebar-cta i {
+    font-size: 2.2rem;
+    color: var(--orange);
+    margin-bottom: 0.7rem;
+    display: block;
 }
 
-.testimonial-quote {
-    font-size: 1.5rem;
-    font-style: italic;
-    line-height: 1.8;
-    margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 0.9);
+.sidebar-cta h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 0.5rem;
 }
 
-.testimonial-author {
+.sidebar-cta p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.1rem;
+    line-height: 1.5;
+}
+
+.btn-cta {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    padding: 9px 24px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background var(--transition), transform var(--transition);
+}
+
+.btn-cta:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* Tablet: stack layout */
+@media (max-width: 1100px) {
+    .blog-post-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-section-heading h2 {
+        font-size: 1.7rem;
+    }
+
+    .post-main-title {
+        font-size: 1.4rem;
+    }
+
+    .post-header-area,
+    .post-body,
+    .visa-alert-box {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+    }
+
+    .post-hero-img {
+        margin-left: 1.2rem;
+        margin-right: 1.2rem;
+        height: 220px;
+    }
+
+    .blog-whatsapp-cta {
+        padding: 2rem 1.2rem;
+    }
+
+    .cta-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cta-text-area h3 { font-size: 1.4rem; }
+
+    .cta-whatsapp-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .cta-eyebrow { justify-content: center; }
+
+    .cta-subtitle { max-width: 100%; }
+
+    .itinerary-item {
+        grid-template-columns: 36px 1fr;
+        gap: 0.8rem;
+    }
+
+    .node-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
+    }
+
+    .weather-table-wrapper { border-radius: 0; }
+
+    .blog-sidebar { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+    .visa-alert-box {
+        flex-direction: column;
+    }
+
+    .visa-alert-icon { margin-top: 0; }
+
+    .post-author-strip { flex-wrap: wrap; }
+}
+
+/* =========================================================
+   DYNAMIC TRAVEL GUIDE — SEARCH & RESULT STYLES
+   ========================================================= */
+
+/* ---- Blog main area wrapper (replaces article for guide page) ---- */
+.blog-main-area {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* ---- Premium Search Wrapper ---- */
+.guide-search-wrapper {
+    background: linear-gradient(145deg, #f0f4ff 0%, #fff 60%);
+    border: 1.5px solid rgba(0, 51, 153, 0.12);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.guide-search-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(0, 51, 153, 0.08);
+    color: var(--blue);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+.guide-search-label i { color: var(--orange); }
+
+.guide-search-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--blue);
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
+}
+
+.guide-search-sub {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.55;
+}
+
+/* Search Input Bar */
+.guide-search-bar {
     display: flex;
     align-items: center;
-    justify-content: center;
+    background: #ffffff;
+    border: 2px solid #d8e2f5;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    box-shadow: 0 4px 16px rgba(0, 51, 153, 0.07);
+}
+
+.guide-search-bar:focus-within {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 4px rgba(0, 51, 153, 0.1);
+}
+
+.gsb-icon {
+    padding: 0 1rem;
+    color: var(--blue);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.guide-search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.95rem 0.5rem;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: transparent;
+}
+
+.guide-search-bar input::placeholder { color: #aab2c8; }
+
+.gsb-btn {
+    background: linear-gradient(135deg, var(--blue), #0050cc);
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.6rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    border-radius: 0 50px 50px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.25s, transform 0.2s;
+    margin: 4px;
+    white-space: nowrap;
+}
+
+.gsb-btn:hover {
+    background: var(--orange);
+    transform: scale(1.03);
+}
+
+/* Quick-pick Chips */
+.guide-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 51, 153, 0.07);
+    color: var(--blue);
+    border: 1.5px solid rgba(0, 51, 153, 0.15);
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    user-select: none;
+}
+
+.chip:hover {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+    transform: translateY(-2px);
+}
+
+.chip i { font-size: 0.8rem; }
+
+/* ---- Guide Result Container ---- */
+.guide-result {
+    display: none;        /* hidden by default */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.guide-result.visible {
+    display: block;
+}
+
+.guide-result.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Result country header */
+.guide-country-header {
+    background: linear-gradient(135deg, var(--blue), #0050cc);
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
-.testimonial-author img {
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    border: 3px solid rgba(255, 255, 255, 0.2);
-}
-
-.author-info h4 {
+.guide-country-header h2 {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: #fff;
     margin: 0;
-    color: var(--color-white);
-    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.author-info span {
-    color: var(--color-accent);
+.guide-country-header h2 i { color: var(--orange); }
+
+.guide-close-btn {
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 0.9rem;
+    transition: background 0.2s;
+    flex-shrink: 0;
 }
 
-@media (max-width: 991px) {
-    .featured-post {
+.guide-close-btn:hover { background: rgba(255,255,255,0.3); }
+
+/* Result body */
+.guide-result-body {
+    padding: 0 2.5rem 2.5rem;
+}
+
+/* ── Visa Alert inside result ── */
+.visa-alert-box {
+    margin: 2rem 0 0;
+    background: linear-gradient(135deg, #e8f0ff 0%, #eef5ff 100%);
+    border: 1.5px solid rgba(0, 51, 153, 0.2);
+    border-left: 5px solid var(--blue);
+    border-radius: 10px;
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+}
+
+/* ── Itinerary inside result ── */
+.guide-result .post-subheading {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--blue);
+    margin: 2rem 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ── Weather table inside result ── */
+.guide-result .weather-table-wrapper {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+/* ── WhatsApp CTA inside result ── */
+.guide-result .blog-whatsapp-cta {
+    border-radius: 0 0 var(--radius) var(--radius);
+    margin-top: 2.5rem;
+}
+
+/* ---- Not-Found Message ---- */
+.guide-not-found {
+    padding: 3rem 2.5rem;
+    text-align: center;
+}
+
+.guide-not-found i {
+    font-size: 3rem;
+    color: #dde5f7;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.guide-not-found h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 0.5rem;
+}
+
+.guide-not-found p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    margin-bottom: 1.4rem;
+}
+
+.guide-not-found .nf-whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.guide-not-found .nf-whatsapp-btn:hover {
+    background: #1da851;
+    transform: translateY(-2px);
+}
+
+/* ---- Search spinner on button ---- */
+.gsb-btn.loading { pointer-events: none; opacity: 0.75; }
+
+/* =========================================================
+   RESPONSIVE — GUIDE SEARCH
+   ========================================================= */
+@media (max-width: 700px) {
+    .guide-search-wrapper { padding: 1.5rem; }
+    .guide-search-title   { font-size: 1.4rem; }
+
+    .guide-search-bar {
         flex-direction: column;
+        border-radius: 12px;
     }
-    .featured-img {
-        min-height: 300px;
+
+    .gsb-btn {
+        border-radius: 0 0 10px 10px;
+        width: 100%;
+        justify-content: center;
+        margin: 0;
     }
-    .featured-content {
-        padding: 2rem;
-    }
-    .featured-content h2 {
-        font-size: 2rem;
-    }
+
+    .guide-country-header { padding: 1.5rem; }
+    .guide-country-header h2 { font-size: 1.3rem; }
+    .guide-result-body { padding: 0 1.2rem 1.5rem; }
+    .guide-result .blog-whatsapp-cta { padding: 1.8rem 1.2rem; }
+    .guide-result .cta-inner { flex-direction: column; text-align: center; }
+    .guide-result .cta-whatsapp-btn { width: 100%; justify-content: center; }
+    .guide-result .cta-eyebrow { justify-content: center; }
+    .guide-result .cta-subtitle { max-width: 100%; }
 }

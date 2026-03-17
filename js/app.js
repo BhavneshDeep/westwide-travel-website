@@ -432,3 +432,273 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.package-slider').forEach(startSlider);
 });
+
+// =========================================================
+// DYNAMIC TRAVEL GUIDE LOGIC
+// =========================================================
+
+const countryData = {
+    "dubai": {
+        "visaAlert": "🇦🇪 <b>UAE (Dubai) Visa Alert:</b> Pakistani travelers can now apply for a 30-day or 60-day tourist visa with processing times as fast as 48-72 hours. Digital bank statements are accepted.",
+        "itinerary": `
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-plane-arrival"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 1</div><h4>Arrival & Dhow Cruise</h4><p>Arrive in Dubai, transfer to hotel. Evening Marina Dhow Cruise with dinner.</p></div>
+            </div>
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-city"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 2</div><h4>Dubai City Tour & Burj Khalifa</h4><p>Visit Jumeirah Mosque, Burj Al Arab, and 124th floor of Burj Khalifa.</p></div>
+            </div>
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-sun"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 3</div><h4>Desert Safari Adventure</h4><p>Afternoon 4x4 dune bashing, camel riding, and BBQ dinner at desert camp.</p></div>
+            </div>
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-water"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 4</div><h4>Atlantis Aquaventure & Mall</h4><p>Full day at Aquaventure Waterpark followed by shopping at Dubai Mall.</p></div>
+            </div>
+            <div class="itinerary-item itinerary-item--last">
+                <div class="itinerary-node"><div class="node-icon node-icon--last"><i class="fa-solid fa-plane-departure"></i></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 5</div><h4>Departure</h4><p>Breakfast at hotel and transfer to airport for departure.</p></div>
+            </div>`,
+        "weather": `
+            <tr><td>Nov – Mar</td><td>15°C – 28°C</td><td><span class="status-badge status-peak">✦ Best Time</span></td></tr>
+            <tr><td>Apr – Oct</td><td>28°C – 42°C</td><td><span class="status-badge status-off">Very Hot</span></td></tr>`
+    },
+    "turkey": {
+        "visaAlert": "🇹🇷 <b>Turkey Visa Alert:</b> E-visa is available for those with valid US/UK/Schengen visas. Others require sticker visas. Processing takes approx 15-20 working days.",
+        "itinerary": `
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-mosque"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 1</div><h4>Arrival in Istanbul</h4><p>Transfer to Sultanahmet area. Evening walk at Sultanahmet Square.</p></div>
+            </div>
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-landmark"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 2</div><h4>Classic Istanbul Tour</h4><p>Blue Mosque, Hagia Sophia, Topkapi Palace and Grand Bazaar.</p></div>
+            </div>
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-ship"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 3</div><h4>Bosphorus Cruise & Galata</h4><p>Boat tour between Europe and Asia. Visit Galata Tower and Istiklal Street.</p></div>
+            </div>
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-wind"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 4</div><h4>Cappadocia Flight</h4><p>Short flight to Cappadocia. Evening Turkish Night show.</p></div>
+            </div>
+            <div class="itinerary-item itinerary-item--last">
+                <div class="itinerary-node"><div class="node-icon node-icon--last"><i class="fa-solid fa-hot-air-balloon"></i></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 5</div><h4>Balloon Ride & Departure</h4><p>Sunrise Balloon Ride. Cave tours and evening flight back.</p></div>
+            </div>`,
+        "weather": `
+            <tr><td>Apr – May</td><td>15°C – 25°C</td><td><span class="status-badge status-peak">✦ Spring (Best)</span></td></tr>
+            <tr><td>Sep – Oct</td><td>18°C – 28°C</td><td><span class="status-badge status-peak">✦ Autumn (Best)</span></td></tr>
+            <tr><td>Jun – Aug</td><td>25°C – 35°C</td><td><span class="status-badge status-shoulder">Summer</span></td></tr>`
+    },
+    "thailand": {
+        "visaAlert": "🇹🇭 <b>Thailand Visa Alert:</b> Tourist visas take 10-15 working days. Bank statement with 6 months history to be provided (Min 2-3 Lac balance).",
+        "itinerary": `
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-temple"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 1</div><h4>Bangkok Arrival</h4><p>Transfer to hotel. Evening Chao Phraya Dinner Cruise.</p></div>
+            </div>
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-masks-theater"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 2</div><h4>Safari World & Marine Park</h4><p>Full day tour with lunch. Evening at hotel or shopping.</p></div>
+            </div>
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-car"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 3</div><h4>Pattaya Transfer</h4><p>Drive to Pattaya. Visit Sanctuary of Truth. Evening Alcazar Show.</p></div>
+            </div>
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-umbrella-beach"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 4</div><h4>Coral Island Tour</h4><p>Speedboat trip to Coral Island (Koh Larn). Water sports and lunch.</p></div>
+            </div>
+            <div class="itinerary-item itinerary-item--last">
+                <div class="itinerary-node"><div class="node-icon node-icon--last"><i class="fa-solid fa-plane-departure"></i></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 5</div><h4>Return Flight</h4><p>Drive back to Bangkok airport for departure.</p></div>
+            </div>`,
+        "weather": `
+            <tr><td>Nov – Feb</td><td>22°C – 30°C</td><td><span class="status-badge status-peak">✦ Peak Season</span></td></tr>
+            <tr><td>Mar – May</td><td>28°C – 35°C</td><td><span class="status-badge status-shoulder">Hot Season</span></td></tr>`
+    },
+    "malaysia": {
+        "visaAlert": "🇲🇾 <b>Malaysia Visa Alert:</b> E-visa is available for Pakistani citizens. Processing time 48-72 hours. Digital bank statement required.",
+        "itinerary": `
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-tower-observation"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 1</div><h4>Kuala Lumpur Arrival</h4><p>Transfer to hotel. Evening visit to Petronas Twin Towers.</p></div>
+            </div>
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-mountain"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 2</div><h4>Batu Caves & Genting Highlands</h4><p>Day trip with cable car ride and indoor/outdoor theme parks.</p></div>
+            </div>
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-sun-plant-wilt"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 3</div><h4>Sunway Lagoon Theme Park</h4><p>Full day fun at 6 adventure zones. Evening shopping at Bukit Bintang.</p></div>
+            </div>
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-plane"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 4</div><h4>Langkawi Flight</h4><p>Transfer to Langkawi. Evening at Cenang Beach.</p></div>
+            </div>
+            <div class="itinerary-item itinerary-item--last">
+                <div class="itinerary-node"><div class="node-icon node-icon--last"><i class="fa-solid fa-water"></i></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 5</div><h4>Island Hopping & Departure</h4><p>Morning boat tour. Transfer to airport for return flight.</p></div>
+            </div>`,
+        "weather": `
+            <tr><td>Dec – Feb</td><td>24°C – 32°C</td><td><span class="status-badge status-peak">✦ Best Time</span></td></tr>
+            <tr><td>Mar – Nov</td><td>23°C – 33°C</td><td><span class="status-badge status-shoulder">Humid/Rainy</span></td></tr>`
+    },
+    "singapore": {
+        "visaAlert": "🇸🇬 <b>Singapore Visa Alert:</b> E-visa available via authorized agents. Processing time 3-5 working days. Return ticket and hotel booking mandatory.",
+        "itinerary": `
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-tree"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 1</div><h4>Arrival & Gardens by the Bay</h4><p>Arrival, transfer to hotel. Evening visit to Cloud Forest and Flower Dome.</p></div>
+            </div>
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-film"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 2</div><h4>Universal Studios Singapore</h4><p>Full day at Sentosa Island's premier theme park.</p></div>
+            </div>
+            <div class="itinerary-item itinerary-item--last">
+                <div class="itinerary-node"><div class="node-icon node-icon--last"><i class="fa-solid fa-plane-departure"></i></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 3</div><h4>City Tour & Departure</h4><p>Merlion Park, Little India, and transfer to Changi Airport.</p></div>
+            </div>`,
+        "weather": `
+            <tr><td>Year Round</td><td>25°C – 31°C</td><td><span class="status-badge status-peak">✦ Tropical</span></td></tr>`
+    },
+    "egypt": {
+        "visaAlert": "🇪🇬 <b>Egypt Visa Alert:</b> Sticker visa required for Pakistani citizens. Processing takes 3-4 weeks. Bank statement needed.",
+        "itinerary": `
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-landmark-dome"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 1</div><h4>Cairo Arrival</h4><p>Transfer to hotel. Evening Nile River Dinner Cruise with Tanoura dance.</p></div>
+            </div>
+            <div class="itinerary-item itinerary-item--last">
+                <div class="itinerary-node"><div class="node-icon node-icon--last"><i class="fa-solid fa-pyramid"></i></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 2</div><h4>Pyramids of Giza</h4><p>Full day visit to Great Pyramids, Sphinx, and Egyptian Museum.</p></div>
+            </div>`,
+        "weather": `
+            <tr><td>Oct – Apr</td><td>15°C – 25°C</td><td><span class="status-badge status-peak">✦ Winter (Best)</span></td></tr>
+            <tr><td>May – Sep</td><td>25°C – 38°C</td><td><span class="status-badge status-off">Summer</span></td></tr>`
+    },
+    "srilanka": {
+        "visaAlert": "🇱🇰 <b>Sri Lanka Visa Alert:</b> ETA (Electronic Travel Authorization) can be obtained online. Instant approval usually.",
+        "itinerary": `
+            <div class="itinerary-item">
+                <div class="itinerary-node"><div class="node-icon"><i class="fa-solid fa-leaf"></i></div><div class="node-line"></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 1</div><h4>Colombo to Kandy</h4><p>Drive to Kandy, visit Pinnewala Elephant Orphanage on the way.</p></div>
+            </div>
+            <div class="itinerary-item itinerary-item--last">
+                <div class="itinerary-node"><div class="node-icon node-icon--last"><i class="fa-solid fa-umbrella-beach"></i></div></div>
+                <div class="itinerary-content"><div class="itinerary-day">Day 2</div><h4>Bentota Beach</h4><p>Transfer to Bentota. Enjoy water sports and river safari.</p></div>
+            </div>`,
+        "weather": `
+            <tr><td>Dec – Mar</td><td>26°C – 30°C</td><td><span class="status-badge status-peak">✦ West Coast Peak</span></td></tr>
+            <tr><td>Apr – Sep</td><td>26°C – 32°C</td><td><span class="status-badge status-shoulder">East Coast Peak</span></td></tr>`
+    }
+};
+
+function showCountryGuide(countryName) {
+    const resultArea = document.getElementById('guide-result');
+    if (!resultArea) return;
+
+    const searchTerm = countryName.toLowerCase().trim();
+    const data = countryData[searchTerm];
+
+    // Smooth hide if visible
+    resultArea.classList.remove('visible', 'animated');
+
+    setTimeout(() => {
+        if (data) {
+            resultArea.innerHTML = `
+                <div class="guide-country-header">
+                    <h2><i class="fa-solid fa-map-location-dot"></i> ${countryName.toUpperCase()} Travel Guide</h2>
+                    <button class="guide-close-btn" onclick="document.getElementById('guide-result').classList.remove('visible','animated')"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="guide-result-body">
+                    <div class="visa-alert-box">
+                        <div class="visa-alert-icon"><i class="fa-solid fa-bell"></i></div>
+                        <div class="visa-alert-content">
+                            ${data.visaAlert}
+                        </div>
+                    </div>
+                    
+                    <h3 class="post-subheading"><i class="fa-solid fa-clock-rotate-left" style="color:#E69138;"></i> Day-wise Itinerary</h3>
+                    <div class="itinerary-timeline">
+                        ${data.itinerary}
+                    </div>
+
+                    <h3 class="post-subheading"><i class="fa-solid fa-cloud-sun" style="color:#E69138;"></i> Weather & Best Time to Visit</h3>
+                    <div class="weather-table-wrapper">
+                        <table class="weather-table">
+                            <thead>
+                                <tr>
+                                    <th><i class="fa-regular fa-calendar"></i> Month</th>
+                                    <th><i class="fa-solid fa-temperature-half"></i> Temperature</th>
+                                    <th><i class="fa-solid fa-chart-line"></i> Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${data.weather}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="blog-whatsapp-cta">
+                    <div class="cta-inner">
+                        <div class="cta-text-area">
+                            <h3>Ready to visit ${countryName}?</h3>
+                            <p class="cta-subtitle">Get a personalized quote for your trip including visa, tickets, and hotels.</p>
+                        </div>
+                        <a href="https://wa.me/923053033023?text=Hi%20Westwide!%20I'm%20interested%20in%20a%20trip%20to%20${countryName}.%20Please%20guide%20me." target="_blank" class="cta-whatsapp-btn">
+                            <i class="fa-brands fa-whatsapp"></i> Book This ${countryName} Trip Now
+                        </a>
+                    </div>
+                </div>
+            `;
+        } else {
+            resultArea.innerHTML = `
+                <div class="guide-not-found">
+                    <i class="fa-solid fa-earth-africa"></i>
+                    <h3>Destination Not Found</h3>
+                    <p>We currently don't have a guide for "${countryName}" on the website, but we still offer full travel and visa services for it!</p>
+                    <a href="https://wa.me/923053033023?text=Hi%20Westwide!%20I%20am%20looking%20for%20information%20regarding%20a%20trip%20to%20${countryName}." target="_blank" class="nf-whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Contact Us on WhatsApp
+                    </a>
+                </div>
+            `;
+        }
+
+        resultArea.classList.add('visible');
+        setTimeout(() => resultArea.classList.add('animated'), 10);
+        
+        // Scroll to results
+        resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+}
+
+// Wire up search bar listeners
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('guideSearchInput');
+    const searchBtn = document.getElementById('guideSearchBtn');
+
+    if (searchInput && searchBtn) {
+        const handleSearch = () => {
+            const val = searchInput.value.trim();
+            if (val) {
+                searchBtn.classList.add('loading');
+                searchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Finding...';
+                
+                setTimeout(() => {
+                    showCountryGuide(val);
+                    searchBtn.classList.remove('loading');
+                    searchBtn.innerHTML = '<i class="fa-solid fa-arrow-right"></i> Search';
+                }, 600);
+            }
+        };
+
+        searchBtn.addEventListener('click', handleSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSearch();
+        });
+    }
+});
